@@ -22,7 +22,7 @@
 
 
 
-<!--SocketIO - Einbindung RASA-Webchat Botfront-->
+<!--SocketIO - Einbindung RASA-Webchat Botfront - open index file in browser to test widget-->
 
 <html>
 <body>
@@ -32,7 +32,7 @@
         t = document.head || document.getElementsByTagName("head")[0];
     (e.src =
         "https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"),
-        // Replace 1.x.x with the version that you want
+        // Replace 1.x.x after webchat with the version that you want
         (e.async = !0),
         (e.onload = () => {
             window.WebChat.default(
@@ -40,7 +40,10 @@
                     initPayload: '/greet',
                     customData: {language: "en" },
                     socketUrl: "http://localhost:5005",
-                    // add other props here
+                    title: 'Liefy der Restaurant-Bot',
+                    subtitle: 'Can i help u?',
+
+                    // additional props here
                 },
                 null
             );
