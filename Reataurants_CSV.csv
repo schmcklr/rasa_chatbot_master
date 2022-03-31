@@ -1,0 +1,64 @@
+Restaurant_ID;Restaurant_Name;Kategorie;Beschreibung;Öffnet_Mittags;Schließt_Mittags;Öffnet_Abends;Schließt_Abends;Öffnungstage;Preiskategorie;Bewertung;Adresse;Telefon;Website;;;Tage;Preiskategorie;Bewertung
+1;HA TIEN;Asiatisch;Unsere pan-asiatische Speisekarte umfasst nicht nur chinesische oder thailändische Speisen, auch vietnamesische Köstlichkeiten bieten wir dir in einer reichen Auswahl an. Traditionelle Gerichte werden bei uns in modernem Gewand präsentiert. Und neben den Klassikern kannst du bei uns auch exotische Speisen probieren.;11:30:00;14:30:00;17:00:00;21:00:00;Mo, Di, Mi, Do, Fr, Sa;1;4,7;Kohlenmarkt 1, 93047 Regensburg;0941 53888;https://hatien-regensburg.de/;;;;;
+2;Namaste;Asiatisch;Mit unseren Speisen bieten wir Ihnen eine Auswahl an Gerichten aus ganz Indien, die sich in der Verwendung von Zutaten und Gewürzen so nah wie möglich an die originalen indischen Rezepte halten. Erleben sie die Vielfalt der indischen Küche hautnah.;11:30:00;14:30:00;17:00:00;22:30:00;Mo, Di, Mi, Do, Fr, Sa, So;2;4,5;"Schikaneder Str. 2a im Posthof
+93053 Regensburg";0941 708626;https://www.namaste-regensburg.de/;;;;;
+3;Sam Kullman's Diner;Amerikanisch;"Gerade durch die zeitlose und unaufgeregte Atmosphäre fühlen sich Gäste aller Alters- und gesellschaftlichen Klassen wohl bei Kullman’s. Man könnte auch sagen, Kullman’s Diner sind die neuen Nachbarschaftslokale für jedermann.
+
+Das große und abwechslungsreiche Angebot an frischen und leckeren Angeboten zum Frühstück, Lunch und Abendessen sind weitere angenehme und gute Argumente für einen entspannten Besuch bei Kullman’s.";12:30:00;durchgehend geöffnet ;durchgehend geöffnet ;22:30:00;Mo, Di, Mi, Do, Fr, Sa, So;2;4,2;Friedenstraße 10, 93053 Regensburg;0941 6309833;https://www.kullmans.de/;;;;;
+4;Hans im Glück;Amerikanisch;"Eine entspannte Atmosphäre, nette Menschen, einen einfach außergewöhnlichen Ort. Leckeres Essen für Veganer und Vegetarier sowie alle Fleischgenießer. Immer frische Zutaten und beste Qualität. Sympathische Gastgeber, die für Dich da sind.
+Einen Moment für Dich oder mit Freunden.
+Glück braucht nicht viel.
+Glück braucht nur das Richtige. 
+Herzlich willkommen bei HANS IM GLÜCK.";11:30:00;durchgehend geöffnet ;durchgehend geöffnet ;22:00:00;Mo, Di, Mi, Do, Fr, Sa, So;2;4,3;Kohlenmarkt 6, 93047 Regensburg;0941 38219591;https://hansimglueck-burgergrill.de/standort/regensburg-innenstadt/;;;;;
+5;Der Grieche am Herzogshof;Griechisch;"____ _____
+GUTEN APPETIT
+Wir bieten Ihnen ein reichhaltiges Angebot an griechischen Spezialitäten";geschlossen;geschlossen;17:30:00;22:00:00;Mo, Mi, Do, Fr, Sa, So;2;4,7;Alter Kornmarkt 1, 93047 Regensburg;0941 5999303;https://dergrieche-regensburg.de/;;;;;
+6;Akropolis;Griechisch;"Wir möchten Sie herzlich in unserem Restaurant ""Akropolis"" in Regensburg begrüßen. Genießen Sie in einem angenehmen Ambiente unsere Kreationen.";11:30:00;14:30:00;17:30:00;22:00:00;Di, Mi, Do, Fr, Sa, So;2;4,4;Leublfingstraße 9, 93053 Regensburg;0941 78529955;http://akropolis-regensburg.com/;;;;;
+7;L’Osteria;Italienisch;In der Nähe des Doms, umgeben von zahlreichen kleinen Geschäften, liegt die L'Osteria Regensburg. Dort gibt es riesen Pizza in einer einzigartigen Atmosphäre. Aber in der L'Osteria Regensburg servieren wir nicht nur Pizza, sondern auch zahlreiche andere Klassiker der italienischen Küche wie Antipasti, Vitello Tonnato, verschiedene Salate oder Pasta. Lust auf etwas Süßes? Wie wäre es mit Tiramisù, einem Panna Cotta oder einer anderen italienischen Nachspeise? Unsere Pizza ist mit ihren 45cm Durchmessern wirklich riesig, darum servieren wir die Pizza auch gerne mit zwei unterschiedlich belegten Hälften zum Teilen. Wir legen nicht nur viel Wert auf die Qualität unserer Speisen, sondern auch darauf, dass sich in unserem Restaurant alle wohlfühlen. Für die Kleinsten gibt es eine Wickelmöglichkeit. Die etwas Größeren können sich in der L'Osteria Regensburg mit Mama oder Papa eine Pizza teilen oder eine kleine Portion Pasta genießen.;11:00:00;durchgehend geöffnet ;durchgehend geöffnet ;22:30:00;Mo, Di, Mi, Do, Fr, Sa, So;2;4,4;Watmarkt 1, 93047 Regensburg;0941 5999181;https://losteria.net/de/restaurants/restaurant/regensburg/;;;;;
+8;Pizzeria Amore, Vino & Amici;Italienisch;"AMORE, PIZZA & PASTA
+Unsere Eltern stammen aus Sizilien. Als sie vor 50 Jahren nach Regensburg kamen, war italienisches Essen noch eine exotische Erinnerung an den letzten Urlaub. Auch heute noch kann der Besuch in einem italienischen Restaurant Urlaubsgefühl vermitteln. Messina; die Hitze eines Sommertages legt sich. Vor dir duftet eine Bistecca alla Pizzaiola nach feinsaurer Tomate und deftigen Kapern. Du tunkst das warme Brot in die Sauce und bist fern von deiner Heimat.
+
+Wir versuchen die Küche unserer Eltern zu bewahren und euch das Ganze in einem modernen Kleid zu präsentieren. Hausgemachte Pasta, ausgefallene Pizza, frische Fische von der Tageskarte und klassisch italienische Fleischgerichte. Kein Chi chi. Nur ursprüngliche sizilianische Küche und ihr ehrlicher Geschmack.";geschlossen;geschlossen;17:00:00;22:00:00;Di, Mi, Do, Fr, Sa, So;3;4,5;Hinter d. Grieb 8, 93047 Regensburg;0941 93081525;https://www.amore-vino-amici.de/;;;;;
+9;Weltenburger am Dom;Bayerisch;"Im Herzen der Regensburger Altstadt
+direkt am Dom
+Aus deftigen Rezepten werden kulinarische Genüsse. Unsere Bayerischen Schmankerl und regionale Spezialitäten finden Sie in unserer Speisekarte. 
+
+Frisch vom Schank servieren wir Ihnen Weltenburger Bierspezialitäten 
+der ältesten Klosterbrauerei der Welt.";geschlossen;geschlossen;17:00:00;22:00:00;Mo, Di, Mi, Do, Fr, Sa, So;3;4,5;Domplatz 3, 93047 Regensburg; 0941 5861460;https://www.weltenburger-am-dom.de/;;;;;
+10;Alte Linde;Bayerisch;"Regionale Lieferanten, ein Zeichen für Qualität
+Sehr geehrte Gäste,
+
+wir bemühen uns, unsere Lebensmittel von Oberpfälzer Lieferanten mit Blick auf Tierwohl, Nachhaltigkeit und Regionalität zu beziehen.
+
+Hier eine kleine Auswahl:
+
+• frischer Fisch vom Fischhof Mulzer
+
+• Geflügel aus Weidehaltung von Mulzer
+
+• Gemüsebau Graf in Winzer
+
+• Metzgerei Kain in der Regensburger Altstadt
+
+• Fleischwaren von FleiWa aus Wald
+
+• Brauerei Kneitinger im Herzen der Altstadt";geschlossen;geschlossen;15:00:00;22:00:00;Mo, Di, Mi, Do, Fr, Sa, So;2;4,3;Müllerstraße 1, 93059 Regensburg;0941 88080;http://www.altelinde-regensburg.de/;;;;;
+11;The Tai;Asiatisch;Authentisches thailändisches Restaurant mit heimeligem Ambiente und einem spektakulären Dekor. Nach einem langen Spaziergang um den Haidplatz herum, kann man sich in diesem Restaurant gut ausruhen bei einer wunderbaren thailändischen Küche.;geschlossen, Sa und So 11:00:00;geschlossen, Sa und So geöffnet;17:00:00;22:00:00;Di, Mi, Do, Fr, Sa, So;2-3;4;Rote Hahengasse, Haidpl. 3, 93047 Regensburg;0941 59976699;theTHAI;;;;;
+12;Bodega;Spanisch;"La Bodega - Es flirrt die Luft, die Gläser klirren. Freunde und Fremde sitzen dicht aufeinander; genießen Essen, Gesellschaft und Wein. Weil man von Luft und Liebe alleine nicht leben kann, verkaufen wir Tapas. Das ist diese bekannte Kunst der kleinen Köstlichkeiten: aus dem Meer und vom Feld und vom Schwein. Gegrillt, flambiert, gehobelt, geröstet, geschwenkt und direkt mit Brot und Aioli in eure Gaumen serviert.";geschlossen;geschlossen;18:00:00;23:59:00;Di, Mi, Do, Fr, Sa, So;2;4;Von der Grieb 1a, 93047 Regensburg;0941 5840486;http://bodega-regensburg.de/;;;;;
+13;Bar Ravel;Spanisch;Mediteranes spanisches Restaurant - Kosten Sie Gerichte aus der spanischen Küche. Tapas werden aus regionalen und frisch importierten Zutaten täglich mit viel Liebe zur Handarbeit zubereitet. Die Speisekarte wird von Klassikern der Tapas-Küche, wie Datteln im Speckmantel, den besten Oliven, saftigen Albondigas oder Patatas Bravas bis hin zu wechselnden Spezialitäten geschmückt.;geschlossen;geschlossen;17:00:00;02:00:00;Mo, Di, Mi, Do, Fr, Sa, So;2-3;4;D.-Martin-Luther-Straße 14, 93047 Regensburg;0941 59002;https://www.bar-ravel.de/;;;;;
+14;Bolero's;Spanisch;Spanische Grill und Tapas Bar mit schöner Atmosphäre in einem Innenhof. Das Restaurant bietet viele schmackhafte Fisch- und Meeresfrüchte-Gerichte sowie freundliches und aufmerksame Personal.;geschlossen;geschlossen;17:30:00, Di 18:00:00;23:00:00;Mo, Di, Mi, Do, Fr, Sa, So;2;3;Obere Bachgasse 6, 93047 Regensburg;0178 9300432;https://boleros-tapas.de/;;;;;
+15;Burgerheart;Amerikanisch;"DEIN HERZ SCHLÄGT FÜR SAFTIGE BURGER UND KNUSPRIGE FRITTEN?
+ 
+Dann bist Du bei uns goldrichtig - willkommen im Burgerhimmel! Mitten in der Regensburger City geht’s für Deine Geschmacksnerven rund: In der Schwarze-Bären-Straße unweit der Donau erwarten Dich nicht nur die besten Burger der Stadt, sondern auch unser unfassbar saftiges BBQ, knackig-frische Salate, ausgefallene Drinks und zum Träumen leckere Desserts - alles serviert von unserem gut gelaunten Team der Burgerheart-Family.";11:30:00;geöffnet;geöffnet;22:00:00;Mo, Di, Mi, Do, Fr, Sa, So;2;4,5;Schwarze-Bären-Straße 10, 93047 Regensburg;0941 46627330;https://regensburg.burgerheart.com/;;;;;
+16;Taverna Stefanos;Griechisch;Die Teverna Stefanos heißt Sie herzlich Willkommen und ladet Sie zu kulinarischen Spezialitäten aus der griechischen Heimat ein. Machen Sie in diesem Restaurant eine Pause von Ihrem Alltag. Wir freuen uns auf Sie!;11:00:00;14:00:00;17:00:00;23:00:00;Di, Mi, Do, Fr, Sa, So;2-3;4;Ostengasse 16, 93055, Regensburg;0941 78039810;http://www.taverna-stefanos.de/;;;;;
+17;Papageno;Italienisch;Herzlich Willkommen im Papageno! Genießen Sie die mediterane Küche - leckeres und frisches Essen á la bella Italia. Unser freundliches und zuvorkommendes Personal freut sich bereits auf Sie.;geschlossen;geschlossen;17:30:00;00:00:00;Mo, Di, Mi, Do, Fr, Sa, So;2-3;4;Keplerstraße 14, 93047, Regensburg;0941 6308165;http://www.papageno-regensburg.de/;;;;;
+18;Hofbräuhaus;Bayerisch;Das Hofbräuhaus gehört zu den schönsten historischen Wirtshäusern in der Oberpfalz. Es wartet Sie bayrische Spezialitäten und das Münchner Hofbräu-Bier. Regionalität und Frische sind für die hausgemachten Gerichte die Basis. Viele Gäste schätzen die besonderen Gerichte, die es nur noch selten in Wirtshäusern gibt. Dazu zählen Gerichte wie z. B. Herz vom Rost, Leber sauer oder der beliebte Geheimtipp das Hofbräuhaus-Tatar. Die Speisen sind saisonal, sowie die „gekrönten“ Hofbräu-Biere die aus den Zapfhähnen des Hofbräuhauses fließen.;10:00:00;geöffnet, So 15:00:00;geöffnet;22:00:00;Mo, Di, Mi, Do, Fr, Sa, So;2;4;Waaggäßchen 1, 93047 Regensburg ;0941 51280;https://www.hofbraeuhaus-regensburg.de/de/;;;;;
+;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;
