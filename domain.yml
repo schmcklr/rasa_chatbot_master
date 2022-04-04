@@ -14,21 +14,30 @@ intents:
 responses:
 
   utter_greet:
-  - text: "Hallo, wie geht es dir?"
+  - text: "Hallo, wie geht es dir? "
 
 
   utter_start:
-  - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weist du bereits was du essen möchtest?"
+  - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weist du bereits was du essen möchtest?😜"
     buttons:
     - title: "Beratung"
       payload: "/advice"
     - title: "Ich weiß was ich möchte"
       payload: "/no_advice"
 
-
   food_direction:
-  - text: "Weißt du schon welche Richtung"
-
+    - text: "Weißt du schon welche Richtung?"
+      buttons:
+        - title: "Asiatisch"
+          payload: "/advice"
+        - title: "Indisch"
+          payload: "/no_advice"
+        - title: "Deutsch"
+          payload: "/no_advice"
+        - title: "Afrikanisch"
+          payload: "/no_advice"
+        - title: "Bayrisch"
+          payload: "/no_advice"
 
   utter_did_that_help:
   - text: "Did that help you?"
