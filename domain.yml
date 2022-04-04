@@ -9,7 +9,7 @@ intents:
   - mood_unhappy
   - bot_challenge
   - advice
-  - no-advice
+  - no_advice
 
 responses:
 
