@@ -4,88 +4,129 @@ nlu:
 - intent: greet
   examples: |
     - hey
-    - hello
+    - hallo
     - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - guten morgen
+    - guten abend
+    - morgen
+    - servus
+    - habadere
+    - dere
+    - tag
+    - starten
+    - los gehts!
+    - guten nachmittag
+    - grüß gott
+    - guten tag
+    - moin moin
 
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
+    - tschüss
+    - tschau
+    - gute nacht
     - bye
     - goodbye
     - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - hab einen schönen Tag
+    - noch einen schönen Tag
+    - seh dich 
+    - tschau tschau
+    - bis später
+    - bis dann
+    - auf wiedersehen
+    - bis dahin
+
 
 - intent: affirm
   examples: |
     - yes
     - y
+    - ja
     - indeed
-    - of course
-    - that sounds good
-    - correct
+    - sicher
+    - klaro
+    - ok
+    - aber sicher
+    - freilich
+    - na klar
+    - auf jedenfall
+    - das hört sich gut an
+    - korrekt
+    - weiter
 
 - intent: deny
   examples: |
     - no
     - n
     - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - nein
+    - ne
+    - ich denke eher nicht
+    - ich mag das nicht
+    - ich will das nicht
+    - bitte nicht
+    - zurück
+    - stopp
+    - nicht wirklich
+    
 
 - intent: mood_great
   examples: |
     - perfect
     - great
     - amazing
-    - feeling like a king
     - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - wunderbar
+    - perfekt
+    - ich fühle mich gut
+    - mir gehts es gut
+    - mir geht es sehr gut
+    - ich bin ok
+    - mir geht es fantastisch
+    - sehr gut
+    - wunderbar
+    - alles prima
+    - alles ok
+    - extrem gut
+    
 
 - intent: mood_unhappy
   examples: |
-    - my day was horrible
+    - ich bin traurig
     - I am sad
+    - ich fühl mich nicht so gut
+    - mir geht es schlecht
+    - naja
+    - geht mir nicht so gut
+    - mir ist schlecht
+    - ich habe schmerzen
+    - mir tut das weh
+    - traurig
     - I don't feel very well
     - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - unglücklich 
 
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - bist du ein Mensch?
+    - bist du ein Bot?
+    - spreche ich mit einem Bot?
+    - spreche ich mit einem Menschen?
+    - bot oder mensch
+
+ - intent: advice
+   examples: |
+    - ich weiß nicht was ich will 
+    - ich habe keinen plan
+    - bitte berate mich
+    - ich möchte eine beratung
+    - beratung
+    
+
+ - intent: no_advice
+    examples: |
+  - ich weiß was ich will
+  - ich brauche keine beratung
+  - keine beratung
+  - ich komme klar
