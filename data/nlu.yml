@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.0.9"
 
 nlu:
 - intent: greet
@@ -115,18 +115,18 @@ nlu:
     - spreche ich mit einem Menschen?
     - bot oder mensch
 
- - intent: advice
-   examples: |
+- intent: advice
+  examples: |
     - ich weiß nicht was ich will 
     - ich habe keinen plan
     - bitte berate mich
     - ich möchte eine beratung
     - beratung
-    
 
- - intent: no_advice
+
+- intent: no_advice
     examples: |
-  - ich weiß was ich will
-  - ich brauche keine beratung
-  - keine beratung
-  - ich komme klar
+    - ich weiß was ich will
+    - ich brauche keine beratung
+    - keine beratung
+    - ich komme klar
