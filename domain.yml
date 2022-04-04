@@ -8,6 +8,8 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - advice
+  - no-advice
 
 responses:
 
