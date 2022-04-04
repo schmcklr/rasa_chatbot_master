@@ -1,4 +1,4 @@
-version: "3.0.9"
+version: "3.1"
 
 intents:
   - greet
@@ -16,16 +16,17 @@ responses:
   utter_greet:
   - text: "Hallo, wie geht es dir?"
 
-  start:
-  - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weißt du bereits was du essen möchtest oder soll ich dich beraten?"
 
+  utter_start:
+  - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weist du bereits was du essen möchtest?"
     buttons:
-      - title: "Beratung"
-        payload: "/advice"
-      - title: "Ich weiß was ich möchte"
-        payload: "/no_advice"
+    - title: "Beratung"
+      payload: "/advice"
+    - title: "Ich weiß was ich möchte"
+      payload: "/no_advice"
 
-  food_derection:
+
+  food_direction:
   - text: "Weißt du schon welche Richtung"
 
 

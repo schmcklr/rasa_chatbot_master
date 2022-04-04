@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.1"
 
 stories:
 
@@ -6,26 +6,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: start
+  - action: utter_start
   - intent: advice
-  - action: food_derection
+  - action: food_direction
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_greet
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_greet
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
