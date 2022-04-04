@@ -10,12 +10,22 @@ intents:
   - bot_challenge
 
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_greet:
+  - text: "Hallo, wie geht es dir?"
+
+  start:
+  - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weißt du bereits was du essen möchtest oder soll ich dich beraten?"
+
+    buttons:
+      - title: "Beratung"
+        payload: "/advice"
+      - title: "Ich weiß was ich möchte"
+        payload: "/no_advice"
+
+  food_derection:
+  - text: "Weißt du schon welche Richtung"
+
 
   utter_did_that_help:
   - text: "Did that help you?"
