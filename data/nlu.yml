@@ -125,7 +125,7 @@ nlu:
 
 
 - intent: no_advice
-    examples: |
+  examples: |
     - ich weiß was ich will
     - ich brauche keine beratung
     - keine beratung
