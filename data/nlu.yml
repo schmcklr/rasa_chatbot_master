@@ -130,3 +130,26 @@ nlu:
     - ich brauche keine beratung
     - keine beratung
     - ich komme klar
+    
+    
+
+- intent: decide_for_direction
+  examples: |
+    - ich möchte asiatisch essen
+    - bitte zeig mir amerikanisches essen
+    - ich habe lust auf italienisch
+  
+
+- intent: amerik
+  examples: |
+    - ich möchte [amerikanisch]{"entity": "food_category"} essen
+    - amerikanisch{"entity": "food_category"} bitte
+    - ich habe lust auf amerikanisch{"entity": "food_category"}
+
+- intent: ital
+  examples: |
+    - italienisch [italienisch]{"entity": "food_category"}
+    - ich will [italienisch]{"entity": "food_category"}
+    - ich möchte bitte [italienisch]{"entity": "food_category"} essen
+    - [italienisch]{"entity": "food_category"} essen
+    - [italienisch]{"entity": "food_category"} food bitte

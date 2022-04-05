@@ -35,3 +35,4 @@ pd.set_option('display.width', 2000)
 print(restaurants[restaurants["Öffnet_Abends"] != "durchgehend geöffnet"])
 # display one column of one restaurant
 print(restaurants[restaurants["Restaurant_Name"] == "Namaste"].Beschreibung)
+print(dishes.Kategorie)

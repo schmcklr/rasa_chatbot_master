@@ -6,7 +6,27 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_start
+  - action: utter_support_question
   - intent: advice
   - action: food_direction
+  - intent: decide_for_direction
 
+
+- story: amerikan path
+  steps:
+    - intent: amerik
+      entities:
+        - food_category: "amerikanisch"
+    - slot_was_set:
+        - food_category: "amerikanisch"
+- action: utter_amerik
+
+
+- story: italian path
+  steps:
+    - intent: ital
+      entities:
+        - food_category: "italienisch"
+    - slot_was_set:
+        - food_category: "italienisch"
+- action: utter_ital

@@ -10,46 +10,79 @@ intents:
   - bot_challenge
   - advice
   - no_advice
+  - decide_for_direction
+
+entities:
+  - food_category
+
+slots:
+  food_category:
+    - type: list
+mappings:
+          - type: from_entity
+            entity: food_category
+
+
 
 responses:
-
   utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+
   - text: "Hallo, wie geht es dir? "
 
 
-  utter_start:
-  - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weist du bereits was du essen möchtest?😜"
-    buttons:
-    - title: "Beratung"
-      payload: "/advice"
-    - title: "Ich weiß was ich möchte"
-      payload: "/no_advice"
+  utter_support_question:
+    - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weist du bereits was du essen möchtest?😜"
+      buttons:
+          - title: "Beratung"
+            payload: "/advice"
+          - title: "Ich weiß was ich möchte"
+            payload: "/no_advice"
+
+
 
   food_direction:
     - text: "Weißt du schon welche Richtung?"
       buttons:
-        - title: "Asiatisch"
-          payload: "/advice"
-        - title: "Indisch"
-          payload: "/no_advice"
-        - title: "Deutsch"
-          payload: "/no_advice"
-        - title: "Afrikanisch"
-          payload: "/no_advice"
-        - title: "Bayrisch"
-          payload: "/no_advice"
+           - title: "Asiatisch"
+             payload: "/advice"
+           - title: "Indisch"
+             payload: "/no_advice"
+           - title: "Deutsch"
+             payload: "/no_advice"
+           - title: "Afrikanisch"
+             payload: "/no_advice"
+           - title: "Bayrisch"
+             payload: "/no_advice"
+
 
   utter_did_that_help:
-  - text: "Did that help you?"
+    - text: "Did that help you?"
 
   utter_happy:
-  - text: "Great, carry on!"
+    - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "I am a bot, powered by Rasa."
+
+
+  utter_amerik:
+    - text: "Ok good choice."
+
+  utter_ital:
+    - text: "Ok good choice."
+
+  -actions:
+    - food_direc
+
+
+
+
 
 session_config:
   session_expiration_time: 60
