@@ -1,15 +1,14 @@
 version: "3.1"
 
 stories:
-
 - story: happy path
   steps:
-  - intent: greet
-  - action: utter_greet
-  - action: utter_support_question
-  - intent: advice
-  - action: food_direct
-  - intent: decide_for_direction
+    - intent: greet
+    - action: utter_greet
+    - action: food_direct
+    - intent: amerik
+    - action: utter_goodbye
+
 
 
 - story: amerikan path
