@@ -8,7 +8,7 @@ stories:
   - action: utter_greet
   - action: utter_support_question
   - intent: advice
-  - action: food_direction
+  - action: food_direct
   - intent: decide_for_direction
 
 
@@ -19,7 +19,7 @@ stories:
         - food_category: "amerikanisch"
     - slot_was_set:
         - food_category: "amerikanisch"
-- action: utter_amerik
+    - action: food_direct
 
 
 - story: italian path
@@ -29,4 +29,4 @@ stories:
         - food_category: "italienisch"
     - slot_was_set:
         - food_category: "italienisch"
-- action: utter_ital
+    - action: food_direct

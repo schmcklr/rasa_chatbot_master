@@ -142,14 +142,23 @@ nlu:
 
 - intent: amerik
   examples: |
-    - ich möchte [amerikanisch]{"entity": "food_category"} essen
-    - amerikanisch{"entity": "food_category"} bitte
-    - ich habe lust auf amerikanisch{"entity": "food_category"}
+    - ich möchte [amerikanisch](food_category) essen
+    - [amerikanisch](food_category) bitte
+    - ich habe lust auf [amerikanisch](food_category)
 
 - intent: ital
   examples: |
-    - italienisch [italienisch]{"entity": "food_category"}
-    - ich will [italienisch]{"entity": "food_category"}
-    - ich möchte bitte [italienisch]{"entity": "food_category"} essen
-    - [italienisch]{"entity": "food_category"} essen
-    - [italienisch]{"entity": "food_category"} food bitte
+    - italienisch [italienisch](food_category)
+    - ich will [italienisch](food_category)
+    - ich möchte bitte [italienisch](food_category) essen
+    - [italienisch](food_category) essen
+    - [italienisch](food_category) food bitte
+
+- lookup: food_category
+  examples: |
+    - amerikanisch
+    - asiatisch
+    - indisch
+    - italienisch
+    - deutsch
+    - griechisch

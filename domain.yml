@@ -11,17 +11,18 @@ intents:
   - advice
   - no_advice
   - decide_for_direction
+  - ital
+  - amerik
 
 entities:
   - food_category
 
 slots:
   food_category:
-    - type: list
-mappings:
-          - type: from_entity
-            entity: food_category
-
+    type: any
+    mappings:
+    - type: any
+      entity: food_category
 
 
 responses:
@@ -77,11 +78,8 @@ responses:
   utter_ital:
     - text: "Ok good choice."
 
-  -actions:
-    - food_direc
-
-
-
+actions:
+- food_direct
 
 
 session_config:

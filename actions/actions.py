@@ -5,26 +5,28 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 
-# This is a simple example for a custom action which utters "Hello World!"
+# Import of Excel DB
+import restaurantData.dataImport
 
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-class ActionFoodDirec(Action):
 
+class ActionFoodDirect(Action):
+    # return the name of the action - pay attention to the spelling
     def name(self) -> Text:
-        return "food_direc"
+        return "food_direct"
 
+    # collectingDispatcher allows to send back messages to the user
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        buttons={
-            {"payload": '/amerik{"food_category":"amerikanisch"}', "title": "Amerikanisch"},
-            {"payload": '/ital{"food_category":"italienisch"}', "title": "Italienisch"},
+        buttons = {
+            {"payload": '/amerik{{"food_category":"amerikanisch"}}', "title": "Amerikanisch"},
+            {"payload": '/ital{{"food_category":"italienisch"}}', "title": "Italienisch"},
         }
 
-        dispatcher.utter_message(text="Auf welche Essensrichtung hast du denn heute Lust?")
-
+        dispatcher.utter_message(text="Auf welche Essensrichtung hast du denn heute Lust?", buttons=buttons)
 
         return []

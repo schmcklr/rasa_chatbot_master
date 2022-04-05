@@ -11,3 +11,13 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: choose amerikan
+  steps:
+    - intent: amerik
+    - action: food_direct
+
+- rule: choose italian
+  steps:
+    - intent: ital
+    - action: food_direct
