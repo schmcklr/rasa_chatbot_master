@@ -14,25 +14,13 @@ intents:
   - ital
   - amerik
 
-entities:
-  - food_category
-
-slots:
-  food_category:
-    type: list
-    mappings:
-    - type: custom
-      entity: food_category
-
-
-
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hallo, wie geht es dir?"
 
   utter_cheer_up:
-  - text: "Hallo, wie geht es dir? "
+  - text: "Schau das muntert dich bestimmt auf"
 
 
   utter_support_question:
@@ -45,43 +33,27 @@ responses:
 
 
 
-  food_direction:
-  - text: "Weißt du schon welche Richtung?"
-    buttons:
-      - title: "Asiatisch"
-        payload: "/advice"
-      - title: "Indisch"
-        payload: "/no_advice"
-      - title: "Deutsch"
-        payload: "/no_advice"
-      - title: "Afrikanisch"
-        payload: "/no_advice"
-      - title: "Bayrisch"
-        payload: "/no_advice"
-
-
   utter_did_that_help:
-  - text: "Did that help you?"
+  - text: "Hat dir das geholfen?"
 
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "Großartig, weiter so!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Tschau Kakao"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+  - text: "Ich bin ein Bot, der von Studenten der Universität Regensburg programmiert wurde."
 
   utter_amerik:
-  - text: "Ok good choice."
+  - text: "Sehr gute Wahl!"
 
   utter_ital:
-  - text: "Ok good choice."
-
+  - text: "Top Wahl!"
 
 actions:
 - food_direct
+- action_carousels
 
 
 session_config:

@@ -4,28 +4,9 @@ stories:
 - story: happy path
   steps:
     - intent: greet
-    - action: utter_greet
+    - action: utter_support_question
+    - intent: advice
+    - action: utter_happy
     - action: food_direct
     - intent: amerik
-    - action: utter_goodbye
-
-
-
-- story: amerikan path
-  steps:
-    - intent: amerik
-      entities:
-        - food_category: "amerikanisch"
-    - slot_was_set:
-        - food_category: "amerikanisch"
-    - action: food_direct
-
-
-- story: italian path
-  steps:
-    - intent: ital
-      entities:
-        - food_category: "italienisch"
-    - slot_was_set:
-        - food_category: "italienisch"
-    - action: food_direct
+    - action: action_carousels
