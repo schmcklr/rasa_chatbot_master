@@ -49,8 +49,6 @@ responses:
   utter_reply_advice:
   - text: "Dafür ist Liefy die beratende Lieferbo(x)t doch da!!"
 
-  utter_reply_no_advice:
-  - text: "Was du brauchst meine Hilfe gar nicht, dann vielleicht beim nächsten Mal."
 
 actions:
 - food_direct

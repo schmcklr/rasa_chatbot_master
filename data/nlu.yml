@@ -150,8 +150,11 @@ nlu:
   examples: | 
     - ich möchte gerne dieses Essen bestellen
     - das will ich!
+    - ich nehme das 
+    - das möchte ich
 
 - intent: next_food
   examples: |
     - zeig mir anderes Essen
     - Das hier mag ich nicht
+    - weiter bitte

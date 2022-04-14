@@ -20,5 +20,4 @@ stories:
     - intent: greet
     - action: utter_support_question
     - intent: no_advice
-    - action: utter_reply_no_advice
     - action: action_no_advice

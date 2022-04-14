@@ -74,9 +74,9 @@ class ActionImage(Action):
         return "action_images"
 
     async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
-        dispatcher.utter_message(image="https://img.freepik.com/vektoren-kostenlos/nettes-laechelndes-glueckliches"
-                                       "-paket-lieferkasten-zeigen-muskel-flache-zeichentrickfigur-abbildung-isolated"
-                                       "-auf-weissem-hintergrund-lieferung-box-charakter-konzept_92289-1418.jpg")
+        dispatcher.utter_message(image='''https://img.freepik.com/vektoren-kostenlos/nettes-laechelndes-glueckliches-paket-lieferkasten
+                  -zeigen-muskel-flache-zeichentrickfigur-abbildung-isolated-auf-weissem-hintergrund-lieferung-box
+                  -charakter-konzept_92289-1418.jpg''')
         return []
 
 
@@ -85,6 +85,7 @@ class ActionNoAdvice(Action):
         return "action_no_advice"
 
     async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
-        dispatcher.utter_message(image="https://st3.depositphotos.com/8950810/31735/v/600/depositphotos_317354517"
-                                       "-stock-illustration-cute-sad-parceldelivery-box-vector.jpg")
+        dispatcher.utter_message(text="Was du brauchst meine Hilfe gar nicht, dann vielleicht beim nächsten Mal!",
+                                 image='''https://st3.depositphotos.com/8950810/31735/v/600/depositphotos_317354517
+                                       -stock-illustration-cute-sad-parceldelivery-box-vector.jpg''')
         return []
