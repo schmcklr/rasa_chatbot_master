@@ -1,12 +1,24 @@
 version: "3.1"
 
 stories:
-- story: happy path
+- story: happy advice path
   steps:
     - intent: greet
     - action: utter_support_question
     - intent: advice
-    - action: utter_happy
+    - action: utter_reply_advice
+    - action: action_images
     - action: food_direct
     - intent: amerik
     - action: action_carousels
+    - intent: choose_food
+    - action: utter_happy
+
+
+- story: happy no advice path
+  steps:
+    - intent: greet
+    - action: utter_support_question
+    - intent: no_advice
+    - action: utter_reply_no_advice
+    - action: action_no_advice

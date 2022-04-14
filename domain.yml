@@ -13,6 +13,8 @@ intents:
   - decide_for_direction
   - ital
   - amerik
+  - choose_food
+  - next_food
 
 
 responses:
@@ -32,12 +34,11 @@ responses:
         payload: "/no_advice"
 
 
-
   utter_did_that_help:
   - text: "Hat dir das geholfen?"
 
   utter_happy:
-  - text: "Großartig, weiter so!"
+  - text: "Großartig, sehr gute Wahl!"
 
   utter_goodbye:
   - text: "Tschau Kakao"
@@ -45,15 +46,17 @@ responses:
   utter_iamabot:
   - text: "Ich bin ein Bot, der von Studenten der Universität Regensburg programmiert wurde."
 
-  utter_amerik:
-  - text: "Sehr gute Wahl!"
+  utter_reply_advice:
+  - text: "Dafür ist Liefy die beratende Lieferbo(x)t doch da!!"
 
-  utter_ital:
-  - text: "Top Wahl!"
+  utter_reply_no_advice:
+  - text: "Was du brauchst meine Hilfe gar nicht, dann vielleicht beim nächsten Mal."
 
 actions:
 - food_direct
 - action_carousels
+- action_images
+- action_no_advice
 
 
 session_config:

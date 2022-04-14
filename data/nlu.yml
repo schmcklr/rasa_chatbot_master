@@ -145,3 +145,13 @@ nlu:
     - ich möchte amerikanisch essen
     - amerikanisch bitte
     - ich habe lust auf amerikanisch
+
+- intent: choose_food
+  examples: | 
+    - ich möchte gerne dieses Essen bestellen
+    - das will ich!
+
+- intent: next_food
+  examples: |
+    - zeig mir anderes Essen
+    - Das hier mag ich nicht

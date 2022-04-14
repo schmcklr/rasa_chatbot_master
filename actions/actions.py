@@ -37,78 +37,54 @@ class ActionCarousel(Action):
     def name(self) -> Text:
         return "action_carousels"
 
-    def run(self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        covid_resources = {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "MBMC",
-                    "subtitle": "FIND BED, SAVE LIFE.",
-                    "image_url": "static/hospital-beds-application.jpg",
-                    "buttons": [{
-                        "title": "Hospital Beds Availability",
-                        "url": "https://www.covidbedmbmc.in/",
-                        "type": "web_url"
-                    },
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) \
+            -> List[Dict[Text, Any]]:
+        carousel = {
+            "payload": 'cardsCarousel',
+            "data": [
+                {
+                    "image": "https://image.jimcdn.com/app/cms/image/transf/dimension=890x10000:format=jpg"
+                             "/path/s08487bbdb796bdb9/image/i602f6404db8c165c/version/1614547865/rezepte-aus"
+                             "-essen-trinken.jpg",
+                    "title": "Leckeres Essen",
+                    "description": "Hier siehst du eines unserer Essen",
+                    "buttons": [
                         {
-                            "title": "MBMC",
-                            "type": "postback",
-                            "payload": "/affirm"
+                            "title": "Nehme ich",
+                            "payload": "/choose_food",
+                            "type": "postback"
+                        },
+
+                        {
+                            "title": "Weiter",
+                            "payload": "/next_food",
+                            "type": "postback"
                         }
                     ]
                 },
-                    {
-                        "title": "COVID.ARMY",
-                        "subtitle": "OUR NATION, SAVE NATION.",
-                        "image_url": "static/oxygen-cylinder-55-cft-500x554-500x500.jpg",
-                        "buttons": [{
-                            "title": "RESOURCES AVAILABILITY",
-                            "url": "https://covid.army/",
-                            "type": "web_url"
-                        },
-                            {
-                                "title": "COVID ARMY",
-                                "type": "postback",
-                                "payload": "/deny"
-                            }
-                        ]
-                    },
-                    {
-                        "title": "Innovate Youself",
-                        "subtitle": "Get It, Make it.",
-                        "image_url": "static/test.jpg",
-                        "buttons": [{
-                            "title": "Innovate Yourself",
-                            "url": "https://www.innovationyourself.com/",
-                            "type": "web_url"
-                        },
-                            {
-                                "title": "Innovate Yourself",
-                                "type": "postback",
-                                "payload": "/greet"
-                            }
-                        ]
-                    },
-                    {
-                        "title": "RASA CHATBOT",
-                        "subtitle": "Conversational AI",
-                        "image_url": "static/rasa.png",
-                        "buttons": [{
-                            "title": "Rasa",
-                            "url": "https://www.rasa.com",
-                            "type": "web_url"
-                        },
-                            {
-                                "title": "Rasa Chatbot",
-                                "type": "postback",
-                                "payload": "/greet"
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
 
-        dispatcher.utter_message(attachment=covid_resources)
+            ]
+        }
+        dispatcher.utter_message(json_message=carousel)
+        return []
+
+
+class ActionImage(Action):
+    def name(self) -> Text:
+        return "action_images"
+
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
+        dispatcher.utter_message(image="https://img.freepik.com/vektoren-kostenlos/nettes-laechelndes-glueckliches"
+                                       "-paket-lieferkasten-zeigen-muskel-flache-zeichentrickfigur-abbildung-isolated"
+                                       "-auf-weissem-hintergrund-lieferung-box-charakter-konzept_92289-1418.jpg")
+        return []
+
+
+class ActionNoAdvice(Action):
+    def name(self) -> Text:
+        return "action_no_advice"
+
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
+        dispatcher.utter_message(image="https://st3.depositphotos.com/8950810/31735/v/600/depositphotos_317354517"
+                                       "-stock-illustration-cute-sad-parceldelivery-box-vector.jpg")
         return []
