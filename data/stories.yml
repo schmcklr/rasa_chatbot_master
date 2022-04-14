@@ -1,30 +1,23 @@
-version: "3.0"
+version: "3.1"
 
 stories:
-
-- story: happy path
+- story: happy advice path
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+    - intent: greet
+    - action: utter_support_question
+    - intent: advice
+    - action: utter_reply_advice
+    - action: action_images
+    - action: food_direct
+    - intent: amerik
+    - action: action_carousels
+    - intent: choose_food
+    - action: utter_happy
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
 
-- story: sad path 2
+- story: happy no advice path
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+    - intent: greet
+    - action: utter_support_question
+    - intent: no_advice
+    - action: action_no_advice

@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.1"
 
 intents:
   - greet
@@ -8,26 +8,54 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - advice
+  - no_advice
+  - decide_for_direction
+  - ital
+  - amerik
+  - choose_food
+  - next_food
+
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hallo, wie geht es dir?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  - text: "Schau das muntert dich bestimmt auf"
+
+
+  utter_support_question:
+  - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weist du bereits was du essen möchtest?😜"
+    buttons:
+      - title: "Beratung"
+        payload: "/advice"
+      - title: "Ich weiß was ich möchte"
+        payload: "/no_advice"
+
 
   utter_did_that_help:
-  - text: "Did that help you?"
+  - text: "Hat dir das geholfen?"
 
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "Großartig, sehr gute Wahl!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Tschau Kakao"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "Ich bin ein Bot, der von Studenten der Universität Regensburg programmiert wurde."
+
+  utter_reply_advice:
+  - text: "Dafür ist Liefy die beratende Lieferbo(x)t doch da!!"
+
+
+actions:
+- food_direct
+- action_carousels
+- action_images
+- action_no_advice
+
 
 session_config:
   session_expiration_time: 60
