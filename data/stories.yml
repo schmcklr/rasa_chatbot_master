@@ -6,12 +6,13 @@ stories:
     - intent: greet
     - action: utter_support_question
     - intent: advice
-    - action: utter_reply_advice
-    - action: action_images
-    - action: food_direct
-    - intent: amerik
-    - action: action_carousels
-    - intent: choose_food
+  #  - action: ask_for_veg
+  #  - action: utter_reply_advice
+  #  - action: action_images
+    - action: decision_of_category
+    - intent: finish_choosing_category
+  #  - action: action_carousels
+  #  - intent: choose_food
     - action: utter_happy
 
 
