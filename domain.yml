@@ -15,6 +15,7 @@ intents:
   - amerik
   - choose_food
   - next_food
+  - finish_choosing_category
 
 
 responses:
@@ -55,8 +56,10 @@ actions:
 - action_carousels
 - action_images
 - action_no_advice
+- decision_of_category
+- ask_for_veg
 
 
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false

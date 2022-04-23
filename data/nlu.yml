@@ -37,7 +37,6 @@ nlu:
     - auf wiedersehen
     - bis dahin
 
-
 - intent: affirm
   examples: |
     - yes
@@ -158,3 +157,9 @@ nlu:
     - zeig mir anderes Essen
     - Das hier mag ich nicht
     - weiter bitte
+
+- intent: finish_choosing_category
+  examples: |
+    - ich habe meine Lieblingskategorie gewählt
+    - Bin mit der Auswahl der Kategorie fertig
+    - Ich weiß nicht welche Kategorien, dehalb überspringe ich das
