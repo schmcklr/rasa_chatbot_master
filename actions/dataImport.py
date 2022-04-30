@@ -6,17 +6,17 @@ from openpyxl import load_workbook
 # import calendar
 
 # Load workbook and print sheet names
-wb = load_workbook(r'C:\Users\Kevin\Documents\Chat_Bot\rasa_chatbot_master\restaurantData\Restaurant_DB.xlsx')
-sheet_list = wb.sheetnames
+#wb = load_workbook('https://github.com/schmcklr/rasa_chatbot_master/blob/kevin/restaurantData/DB_Restaurant.xlsx')
+#sheet_list = wb.sheetnames
 #print(wb.sheetnames)
 
 # import of tables
-restaurants = pd.read_excel(r'C:\Users\Kevin\Documents\Chat_Bot\rasa_chatbot_master\restaurantData\Restaurant_DB.xlsx', sheet_name="Restaurants")
-dishes = pd.read_excel(r'C:\Users\Kevin\Documents\Chat_Bot\rasa_chatbot_master\restaurantData\Restaurant_DB.xlsx', sheet_name="Gerichte")
-drinks = pd.read_excel(r'C:\Users\Kevin\Documents\Chat_Bot\rasa_chatbot_master\restaurantData\Restaurant_DB.xlsx', sheet_name="Getränke")
-particularities = pd.read_excel(r'C:\Users\Kevin\Documents\Chat_Bot\rasa_chatbot_master\restaurantData\Restaurant_DB.xlsx', sheet_name="Besonderheiten")
-allergens = pd.read_excel(r'C:\Users\Kevin\Documents\Chat_Bot\rasa_chatbot_master\restaurantData\Restaurant_DB.xlsx', sheet_name="Allergene")
-categories = pd.read_excel(r'C:\Users\Kevin\Documents\Chat_Bot\rasa_chatbot_master\restaurantData\Restaurant_DB.xlsx', sheet_name="Kategorien")
+restaurants = pd.read_excel('https://github.com/schmcklr/rasa_chatbot_master/blob/kevin/restaurantData/DB_Restaurant.xlsx?raw=true', sheet_name="Restaurants")
+dishes = pd.read_excel('https://github.com/schmcklr/rasa_chatbot_master/blob/kevin/restaurantData/DB_Restaurant.xlsx?raw=true', sheet_name="Gerichte")
+drinks = pd.read_excel('https://github.com/schmcklr/rasa_chatbot_master/blob/kevin/restaurantData/DB_Restaurant.xlsx?raw=true', sheet_name="Getränke")
+particularities = pd.read_excel(r'https://github.com/schmcklr/rasa_chatbot_master/blob/kevin/restaurantData/DB_Restaurant.xlsx?raw=true', sheet_name="Besonderheiten")
+allergens = pd.read_excel('https://github.com/schmcklr/rasa_chatbot_master/blob/kevin/restaurantData/DB_Restaurant.xlsx?raw=true', sheet_name="Allergene")
+categories = pd.read_excel('https://github.com/schmcklr/rasa_chatbot_master/blob/kevin/restaurantData/DB_Restaurant.xlsx?raw=true', sheet_name="Kategorien")
 
 # get current time, needed for enquiry if restaurant open
 # now = datetime.now()
