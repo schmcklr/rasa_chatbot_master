@@ -5,13 +5,15 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 # Import of Excel DB - Data
+
+
 from actions import dataImport
 
 # Rasa SDK Imports
 from typing import Any, Text, Dict, List, Tuple
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import EventType
+from rasa_sdk.events import EventType, SlotSet
 from rasa_sdk.types import DomainDict
 
 
@@ -34,6 +36,7 @@ class ActionFoodDirect(Action):
         return []
 
 
+# TODO: langsamer Nachrichten ans FE schicken
 class ActionCarousel(Action):
     def name(self) -> Text:
         return "action_carousels"
@@ -112,23 +115,7 @@ class ActionNoAdvice(Action):
         return []
 
 
-# TODO: Slots and Forms
-class ActionChooseCategory(Action):
-    # return the name of the action - pay attention to the spelling
-    def name(self) -> Text:
-        return "decision_of_category"
-
-    # collectingDispatcher allows to send back messages to the user
-    def run(
-            self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
-    ) -> List[EventType]:
-        dispatcher.utter_message(
-            Text="Bitte wähle eine Essensrichtung oder klicke auf weiter:",
-            buttons=[{"title": i, "payload": i} for i in dataImport.categories.Bezeichnung]
-        )
-        return []
-
-
+# function for asking user for being vegan, vegetarian - send buttons to the FE
 class ActionAskForVegetarian(Action):
 
     def name(self) -> Text:
@@ -138,10 +125,64 @@ class ActionAskForVegetarian(Action):
             self,
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            domain: Dict
+    ) -> List[EventType]:
         dispatcher.utter_message(
-            Text="Bist du Vegetarier, Vegan oder Allesesser?:",
-            buttons=[{"payload": "/eat_all", "title": "Allesesser"},
-                     {"payload": "/vegan", "title": "Vegan"},
-                     {"payload": "/vegetarian", "title": "Vegetarier"}])
+            text="Bist du Vegetarier, Vegan oder Allesesser?:",
+            buttons=[{"payload": "/choose{\"veg_ent\": \"eat_all\"}", "title": "Allesesser"},
+                     {"payload": "/choose{\"veg_ent\": \"vegan\"}", "title": "Vegan"},
+                     {"payload": "/choose{\"veg_ent\": \"vegetarian\"}", "title": "Vegetarier"}]
+
+        )
         return []
+
+
+# function which saves decision from above function to a slot and reply to the user
+class ActionReplyToVegetarian(Action):
+
+    def name(self) -> Text:
+        return "reply_to_veg"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict
+    ) -> List[EventType]:
+        get_veg_slot = tracker.get_slot('veg_slot')
+
+        # reply to the user that veg decision is saved in a slot - bot will remember
+        if get_veg_slot == "eat_all":
+            reply = "Allesesser"
+        elif get_veg_slot == "vegan":
+            reply = "ein Veganer"
+        elif get_veg_slot == "vegetarian":
+            reply = "Vegetarier"
+        else:
+            reply = "no_valid_veg_slot_recognized_failure"
+
+        dispatcher.utter_message(
+            text=f"Gut ich merke mir, dass du {reply} bist!"
+        )
+        return []
+
+
+#
+class ActionAskForCategory(Action):
+    # return the name of the action - pay attention to the spelling
+    def name(self) -> Text:
+        return "ask_for_category"
+
+    # collectingDispatcher allows to send back messages to the user
+    def run(
+            self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+        cat_buttons = [{"title": i, "payload": i} for i in
+                       dataImport.categories.Bezeichnung]
+        cat_buttons.append({"title": "Weiter", "payload": "/keep_on_category"})
+
+        dispatcher.utter_message(
+            Text="Bitte wähle eine Essensrichtung oder klicke auf weiter:", buttons=cat_buttons
+        )
+        return []
+

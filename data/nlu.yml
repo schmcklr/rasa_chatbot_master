@@ -163,3 +163,21 @@ nlu:
     - ich habe meine Lieblingskategorie gewählt
     - Bin mit der Auswahl der Kategorie fertig
     - Ich weiß nicht welche Kategorien, dehalb überspringe ich das
+
+- intent: choose
+  examples: |
+    - ich wähle [eat_all](veg_ent)
+    - ich möchte gerne [veg](veg_ent)
+    - ich fühle mich [eat_all](veg_ent) zugehörig
+    - ich bin [vegetarian](veg_ent)
+
+- intent: keep_on_category
+  examples: |
+    - weiter [](cat_ent)
+    - weiter bitte [amerikanisch](cat_ent)
+    - aufgehts, mach weiter [bayerisch](cat_ent) [amerikanisch](cat_ent) [asiatisch](cat_ent)
+    - nächste Frage bitte [amerikanisch](cat_ent)
+    - ich möchte bitte weiter [asiatisch](cat_ent)
+    - ich will hier nichts wählen [spanisch](cat_ent) [bayerisch](cat_ent) 
+    - hab alles was ich will [amerikanisch](cat_ent) [spanisch](cat_ent) [asiatisch](cat_ent)
+    - ich habe alles gewählt was ich möchte [amerikanisch](cat_ent)

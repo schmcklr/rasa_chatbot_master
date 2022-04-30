@@ -11,3 +11,20 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+
+#- rule: Activate form
+ # steps:
+ # - intent: ask_for_veg
+ # - action: veg_slot_form
+ # - active_loop: veg_slot_form
+
+#- rule: Submit form
+ # condition:
+ # - active_loop: veg_slot_form
+ # steps:
+  #- action: veg_slot_form
+ # - active_loop: null
+  #- slot_was_set:
+ #   - requested_slot: null
+ # - action: reply_to_veg

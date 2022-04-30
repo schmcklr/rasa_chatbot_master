@@ -16,7 +16,32 @@ intents:
   - choose_food
   - next_food
   - finish_choosing_category
+  - choose
+  - keep_on_category
 
+entities:
+  - veg_ent
+  - cat_ent
+
+slots:
+  veg_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: veg_ent
+
+  cat_slot:
+    type: list
+    #influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: cat_ent
+
+#forms:
+ # cat_slot_form:
+  # required_slots:
+   # - cat_slot
 
 responses:
   utter_greet:
@@ -56,8 +81,10 @@ actions:
 - action_carousels
 - action_images
 - action_no_advice
-- decision_of_category
+- ask_for_category
 - ask_for_veg
+- reply_to_veg
+- action_receive_veg
 
 
 session_config:
