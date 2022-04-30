@@ -6,14 +6,40 @@ stories:
     - intent: greet
     - action: utter_support_question
     - intent: advice
-  #  - action: ask_for_veg
+    - action: ask_for_veg
+    - intent: choose
+      entities:
+      - veg_ent: eat_all
+    - slot_was_set:
+      - veg_slot: eat_all
+    - action: reply_to_veg
+    - action: ask_for_category
+    - intent: keep_on_category
+    - slot_was_set:
+      - cat_slot: amerikanisch
+    - action: utter_happy
+
   #  - action: utter_reply_advice
   #  - action: action_images
-    - action: decision_of_category
-    - intent: finish_choosing_category
+  #  - action: ask_for_category
+  #  - intent: finish_choosing_category
   #  - action: action_carousels
   #  - intent: choose_food
+
+
+
+- story: happy advice path II
+  steps:
+    - intent: greet
+    - action: utter_support_question
+    - intent: advice
+    - action: ask_for_veg
+    - intent: choose
+    - slot_was_set:
+        - veg_slot: vegetarian
+    - action: reply_to_veg
     - action: utter_happy
+
 
 
 - story: happy no advice path
