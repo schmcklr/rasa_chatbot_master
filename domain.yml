@@ -32,16 +32,16 @@ slots:
         entity: veg_ent
 
   cat_slot:
-    type: text
-    influence_conversation: false
+    type: list
+    #influence_conversation: false
     mappings:
       - type: from_entity
         entity: cat_ent
 
 #forms:
- # veg_slot_form:
- #   required_slots:
-   # - veg_slot
+ # cat_slot_form:
+  # required_slots:
+   # - cat_slot
 
 responses:
   utter_greet:

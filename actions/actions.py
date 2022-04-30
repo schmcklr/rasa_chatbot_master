@@ -138,7 +138,7 @@ class ActionAskForVegetarian(Action):
 
 
 # function which saves decision from above function to a slot and reply to the user
-class ActionReplyVegetarian(Action):
+class ActionReplyToVegetarian(Action):
 
     def name(self) -> Text:
         return "reply_to_veg"
@@ -159,7 +159,7 @@ class ActionReplyVegetarian(Action):
         elif get_veg_slot == "vegetarian":
             reply = "Vegetarier"
         else:
-            reply = "no_veg_slot_recognized_failure"
+            reply = "no_valid_veg_slot_recognized_failure"
 
         dispatcher.utter_message(
             text=f"Gut ich merke mir, dass du {reply} bist!"
@@ -167,7 +167,7 @@ class ActionReplyVegetarian(Action):
         return []
 
 
-# TODO: Forms???
+#
 class ActionAskForCategory(Action):
     # return the name of the action - pay attention to the spelling
     def name(self) -> Text:
@@ -177,12 +177,12 @@ class ActionAskForCategory(Action):
     def run(
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
-        cat_buttons = [{"title": i, "payload": "/keep_on_category" + '{"cat_ent"'':' + " " + '"' + i + '"' + "}"} for i
-                       in
+        cat_buttons = [{"title": i, "payload": i} for i in
                        dataImport.categories.Bezeichnung]
         cat_buttons.append({"title": "Weiter", "payload": "/keep_on_category"})
 
         dispatcher.utter_message(
-            Text="Bitte wähle eine Essensrichtung oder klicke auf weiter:", buttons=cat_buttons)
-
+            Text="Bitte wähle eine Essensrichtung oder klicke auf weiter:", buttons=cat_buttons
+        )
         return []
+
