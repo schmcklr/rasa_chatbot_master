@@ -1,0 +1,56 @@
+<!--REST
+<head>
+    <link rel="stylesheet" href="file:///C:/Users/Kevin/Documents/Chat_Bot/widget/src/pages/Home.js" />
+  </head>
+  <body>
+    <div class="chat-container"></div>
+
+    <script src="file:///C:/Users/Kevin/Documents/Chat_Bot/widget/src/pages/Home.js"/></script>
+    <script type="text/javascript">
+      var chatroom = new window.Chatroom({
+        host: "http://localhost:5005",
+        title: "Chat with Liefy",
+        container: document.querySelector(".chat-container"),
+        welcomeMessage: "Hi, I am Liefy. How can i help u?",
+        speechRecognition: "en-US",
+        voiceLang: "en-US"
+      });
+      chatroom.openChat();
+    </script>
+  </body>-->
+
+
+
+
+<!--SocketIO - Einbindung RASA-Webchat Botfront - open index file in browser to test widget-->
+<!--
+/*<html>
+<body>
+<script>!(function () {
+
+    let e = document.createElement("script"),
+        t = document.head || document.getElementsByTagName("head")[0];
+    (e.src =
+        "https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"),
+        // Replace 1.x.x after webchat with the version that you want
+        (e.async = !0),
+        (e.onload = () => {
+            window.WebChat.default(
+                {
+                    initPayload: '/greet',
+                    customData: {language: "en" },
+                    socketUrl: "http://localhost:5005",
+                    title: 'Liefy der Restaurant-Bot',
+                    subtitle: 'Can i help u?',
+
+                    // additional props here
+                },
+                null
+            );
+        }),
+        t.insertBefore(e, t.firstChild);
+})();
+</script>
+</body>
+</html> -->
+
