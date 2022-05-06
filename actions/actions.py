@@ -214,6 +214,7 @@ class ActionAskForProtein(Action):
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
         # TODO: alter Bezeichung to Bezeichnung typo
+        # TODO: always add "Fleisch" and  "Tofu"
         protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichung'])]
 
         prot_buttons = [{"title": i, "payload": i} for i in
@@ -238,3 +239,39 @@ class ActionAskForProtein(Action):
             json_message=label_protein
         )
         return []
+
+
+class ActionAskForCarbs(Action):
+
+    def name(self) -> Text:
+        return "ask_for_carbs"
+
+    def run(
+            self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+        # TODO: alter Bezeichung to Bezeichnung typo
+        carbs_array = sc[(sc['Kategorie_ID'] == 1) & (sc['Bezeichung'])]
+
+        carbs_buttons = [{"title": i, "payload": i} for i in
+                         carbs_array.Bezeichung]
+
+        label_carbs = {
+
+            "payload": 'choose_carbs',
+            "buttons": carbs_buttons,
+            "meta_data": {
+                "intent": '/keep_on_carbs{"carbs_ent": ',
+                "Badge": "Schritt 3:",
+                "title": "Wähle deine Carbs",
+                "subtitle": 'Wenn du fertig bist klicke auf "Weiter"'
+
+            }
+
+        }
+
+        dispatcher.utter_message(
+            text="Wähle deine Lieblingscarbs:", buttons=carbs_buttons,
+            json_message=label_carbs
+        )
+        return []
+

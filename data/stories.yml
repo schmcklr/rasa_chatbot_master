@@ -21,8 +21,16 @@ stories:
       - cat_slot: amerikanisch
     - action: ask_for_protein
     - intent: keep_on_protein
+      entities:
+      - prot_ent: Fleisch
     - slot_was_set:
       - prot_slot: Fleisch
+    - action: ask_for_carbs
+    - intent: keep_on_carbs
+      entities:
+      - carbs_ent: Kartoffel
+    - slot_was_set:
+      - carbs_slot: Kartoffel
     - action: utter_happy
 
   #  - action: utter_reply_advice

@@ -187,3 +187,9 @@ nlu:
     - [Fleisch](prot_ent)
     - [Soja](prot_ent)
     - [Soja](prot_ent) [Fleisch](prot_ent)
+
+- intent: keep_on_carbs
+  examples: | 
+    - [Kartoffel](carbs_ent)
+    - [Reis](carbs_ent)
+    - [Nudel](carbs_ent) [Kartoffel](carbs_ent)

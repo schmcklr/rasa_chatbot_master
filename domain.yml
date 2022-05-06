@@ -20,11 +20,13 @@ intents:
   - choose
   - keep_on_category
   - keep_on_protein
+  - keep_on_carbs
 
 entities:
   - veg_ent
   - cat_ent
   - prot_ent
+  - carbs_ent
 
 slots:
   veg_slot:
@@ -48,6 +50,14 @@ slots:
     mappings:
       - type: from_entity
         entity: prot_ent
+
+
+  carbs_slot:
+    type: list
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: carbs_ent
 
 
 #forms:
@@ -98,6 +108,7 @@ actions:
 - reply_to_veg
 - action_receive_veg
 - ask_for_protein
+- ask_for_carbs
 
 
 session_config:
