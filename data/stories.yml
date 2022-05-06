@@ -15,8 +15,14 @@ stories:
     - action: reply_to_veg
     - action: ask_for_category
     - intent: keep_on_category
+      entities:
+      - cat_ent: amerikanisch
     - slot_was_set:
       - cat_slot: amerikanisch
+    - action: ask_for_protein
+    - intent: keep_on_protein
+    - slot_was_set:
+      - prot_slot: Fleisch
     - action: utter_happy
 
   #  - action: utter_reply_advice

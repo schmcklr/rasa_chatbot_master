@@ -181,3 +181,9 @@ nlu:
     - ich will hier nichts wählen [spanisch](cat_ent) [bayerisch](cat_ent) 
     - hab alles was ich will [amerikanisch](cat_ent) [spanisch](cat_ent) [asiatisch](cat_ent)
     - ich habe alles gewählt was ich möchte [amerikanisch](cat_ent)
+
+- intent: keep_on_protein
+  examples: | 
+    - [Fleisch](prot_ent)
+    - [Soja](prot_ent)
+    - [Soja](prot_ent) [Fleisch](prot_ent)

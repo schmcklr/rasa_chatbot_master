@@ -1,5 +1,6 @@
 version: "3.1"
 
+
 intents:
   - greet
   - goodbye
@@ -18,10 +19,12 @@ intents:
   - finish_choosing_category
   - choose
   - keep_on_category
+  - keep_on_protein
 
 entities:
   - veg_ent
   - cat_ent
+  - prot_ent
 
 slots:
   veg_slot:
@@ -33,10 +36,19 @@ slots:
 
   cat_slot:
     type: list
-    #influence_conversation: false
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: cat_ent
+
+
+  prot_slot:
+    type: list
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: prot_ent
+
 
 #forms:
  # cat_slot_form:
@@ -85,6 +97,7 @@ actions:
 - ask_for_veg
 - reply_to_veg
 - action_receive_veg
+- ask_for_protein
 
 
 session_config:

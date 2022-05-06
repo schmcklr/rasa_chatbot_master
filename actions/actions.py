@@ -15,6 +15,11 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import EventType, SlotSet
 from rasa_sdk.types import DomainDict
+import random
+
+# imports from dataImport
+sc = dataImport.sub_cats
+cb = dataImport.categories.Bezeichnung
 
 
 class ActionFoodDirect(Action):
@@ -177,12 +182,59 @@ class ActionAskForCategory(Action):
     def run(
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
-        cat_buttons = [{"title": i, "payload": i} for i in
-                       dataImport.categories.Bezeichnung]
-        cat_buttons.append({"title": "Weiter", "payload": "/keep_on_category"})
+        cat_buttons = [{"title": i, "payload": i} for i in cb]
+
+        label_cat = {
+
+            "payload": 'choose_category',
+            "buttons": cat_buttons,
+            "meta_data": {
+                "intent": '/keep_on_category{"cat_ent": ',
+                "Badge": "Schritt 1:",
+                "title": "Wähle deine gewünschten Kategorien",
+                "subtitle": 'Falls du dich noch nicht festlegen willst, klicke auf "Weiter"'
+
+            }}
 
         dispatcher.utter_message(
-            Text="Bitte wähle eine Essensrichtung oder klicke auf weiter:", buttons=cat_buttons
+            text="Bitte wähle eine Essensrichtung oder klicke auf weiter:", buttons=cat_buttons,
+            json_message=label_cat
+
         )
         return []
 
+
+class ActionAskForProtein(Action):
+    # return the name of the action - pay attention to the spelling
+    def name(self) -> Text:
+        return "ask_for_protein"
+
+    # collectingDispatcher allows to send back messages to the user
+    def run(
+            self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+        # TODO: alter Bezeichung to Bezeichnung typo
+        protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichung'])]
+
+        prot_buttons = [{"title": i, "payload": i} for i in
+                        protein_array.Bezeichung]
+
+        label_protein = {
+
+            "payload": 'choose_protein',
+            "buttons": prot_buttons,
+            "meta_data": {
+                "intent": '/keep_on_protein{"prot_ent": ',
+                "Badge": "Schritt 2:",
+                "title": "Wähle deine Proteine",
+                "subtitle": 'Wenn du fertig bist klicke auf "Weiter"'
+
+            }
+
+        }
+
+        dispatcher.utter_message(
+            text="Wähle deine Lieblingsproteine:", buttons=prot_buttons,
+            json_message=label_protein
+        )
+        return []
