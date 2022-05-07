@@ -31,6 +31,12 @@ stories:
       - carbs_ent: Kartoffel
     - slot_was_set:
       - carbs_slot: Kartoffel
+    - action: ask_for_green
+    - intent: keep_on_green
+      entities:
+      - green_ent: Salat
+    - slot_was_set:
+      - green_slot: Salat
     - action: utter_happy
 
   #  - action: utter_reply_advice

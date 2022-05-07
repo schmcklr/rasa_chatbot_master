@@ -275,3 +275,39 @@ class ActionAskForCarbs(Action):
         )
         return []
 
+
+class ActionAskForGreen(Action):
+
+    def name(self) -> Text:
+        return "ask_for_green"
+
+    def run(
+            self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+        # TODO: alter Bezeichung to Bezeichnung typo
+        # TODO: EI und Käse passt hier nicht, entweder zu Proteine oder Namensänderung? Green detaillierter, aber wirklich nur grüne Sachen. Nüsse, Ei, Käse zu Proteine Kat
+        green_array = sc[(sc['Kategorie_ID'] == 3) & (sc['Bezeichung'])]
+
+        green_buttons = [{"title": i, "payload": i} for i in
+                         green_array.Bezeichung]
+
+        label_green = {
+
+            "payload": 'choose_green',
+            "buttons": green_buttons,
+            "meta_data": {
+                "intent": '/keep_on_green{"green_ent": ',
+                "Badge": "Schritt 4:",
+                "title": "Wähle dein Green",
+                "subtitle": 'Wenn du fertig bist klicke auf "Weiter"'
+
+            }
+
+        }
+
+        dispatcher.utter_message(
+            text="Wähle dein Lieblingsgreen:", buttons=green_buttons,
+            json_message=label_green
+        )
+        return []
+

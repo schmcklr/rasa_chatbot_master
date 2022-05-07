@@ -12,6 +12,11 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: only trigger action_no_advice if intent no_advice occurs
+  steps:
+  - intent: no_advice
+  - action: action_no_advice
+
 
 #- rule: Activate form
  # steps:

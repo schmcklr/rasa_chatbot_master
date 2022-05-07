@@ -130,39 +130,6 @@ nlu:
     - keine beratung
     - ich komme klar
     
-    
-
-- intent: decide_for_direction
-  examples: |
-    - ich möchte asiatisch essen
-    - bitte zeig mir amerikanisches essen
-    - ich habe lust auf italienisch
-  
-
-- intent: amerik
-  examples: |
-    - ich möchte amerikanisch essen
-    - amerikanisch bitte
-    - ich habe lust auf amerikanisch
-
-- intent: choose_food
-  examples: | 
-    - ich möchte gerne dieses Essen bestellen
-    - das will ich!
-    - ich nehme das 
-    - das möchte ich
-
-- intent: next_food
-  examples: |
-    - zeig mir anderes Essen
-    - Das hier mag ich nicht
-    - weiter bitte
-
-- intent: finish_choosing_category
-  examples: |
-    - ich habe meine Lieblingskategorie gewählt
-    - Bin mit der Auswahl der Kategorie fertig
-    - Ich weiß nicht welche Kategorien, dehalb überspringe ich das
 
 - intent: choose
   examples: |
@@ -170,6 +137,8 @@ nlu:
     - ich möchte gerne [veg](veg_ent)
     - ich fühle mich [eat_all](veg_ent) zugehörig
     - ich bin [vegetarian](veg_ent)
+
+# TODO: delete text or also implement a solution for free text
 
 - intent: keep_on_category
   examples: |
@@ -184,12 +153,30 @@ nlu:
 
 - intent: keep_on_protein
   examples: | 
+    - [](prot_ent)
     - [Fleisch](prot_ent)
-    - [Soja](prot_ent)
     - [Soja](prot_ent) [Fleisch](prot_ent)
+    - [Soja](prot_ent) [Fleisch](prot_ent) [Fleisch](prot_ent)
 
 - intent: keep_on_carbs
   examples: | 
+    - [](carbs_ent)
     - [Kartoffel](carbs_ent)
-    - [Reis](carbs_ent)
-    - [Nudel](carbs_ent) [Kartoffel](carbs_ent)
+    - [Reis](carbs_ent) [Kartoffel](carbs_ent)
+    - [Nudel](carbs_ent) [Kartoffel](carbs_ent) [Reis](carbs_ent) 
+
+- intent: keep_on_green
+  examples: | 
+    - [](green_ent)
+    - [Salat](green_ent)
+    - [Gemüse](green_ent) [Salat](green_ent)
+    - [Kraut](green_ent) [Salat](green_ent) [Gemüse](green_ent)
+
+
+
+
+
+- intent: choose_food
+  examples: | 
+    - ich möchte gerne dieses Essen bestellen
+    - das will ich!
