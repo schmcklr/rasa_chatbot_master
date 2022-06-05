@@ -6,6 +6,8 @@ stories:
     - intent: greet
     - action: utter_support_question
     - intent: advice
+ #   - action: utter_ask_for_name
+ #   - intent: tell_name
     - action: ask_for_veg
     - intent: choose
       entities:
@@ -19,6 +21,7 @@ stories:
       - cat_ent: amerikanisch
     - slot_was_set:
       - cat_slot: amerikanisch
+   # - action: action_return_slots
     - action: ask_for_protein
     - intent: keep_on_protein
       entities:
@@ -37,28 +40,28 @@ stories:
       - green_ent: Salat
     - slot_was_set:
       - green_slot: Salat
-    - action: utter_happy
+    - action: action_return_slots
 
-  #  - action: utter_reply_advice
-  #  - action: action_images
-  #  - action: ask_for_category
-  #  - intent: finish_choosing_category
-  #  - action: action_carousels
-  #  - intent: choose_food
+#    - action: utter_reply_advice
+#    - action: action_images
+#    - action: ask_for_category
+#   - intent: finish_choosing_category
+#   - action: action_carousels
+#   - intent: choose_food
 
 
 
-- story: happy advice path II
-  steps:
-    - intent: greet
-    - action: utter_support_question
-    - intent: advice
-    - action: ask_for_veg
-    - intent: choose
-    - slot_was_set:
-        - veg_slot: vegetarian
-    - action: reply_to_veg
-    - action: utter_happy
+#- story: happy advice path II
+# steps:
+#  - intent: greet
+#   - action: utter_support_question
+#   - intent: advice
+#   - action: ask_for_veg
+#  - intent: choose
+#  - slot_was_set:
+#      - veg_slot: vegetarian
+#   - action: reply_to_veg
+#   - action: utter_happy
 
 
 

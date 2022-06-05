@@ -6,20 +6,19 @@
 
 # Import of Excel DB - Data
 
-
 from actions import dataImport
 
 # Rasa SDK Imports
-from typing import Any, Text, Dict, List, Tuple
+from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import EventType, SlotSet
+from rasa_sdk.events import EventType
 from rasa_sdk.types import DomainDict
-import random
 
-# imports from dataImport
+# imports from dataImport (DB-Excel)
 sc = dataImport.sub_cats
 cb = dataImport.categories.Bezeichnung
+dt = dataImport.dishes
 
 
 class ActionFoodDirect(Action):
@@ -311,3 +310,105 @@ class ActionAskForGreen(Action):
         )
         return []
 
+
+class ActionReturnSlots(Action):
+
+    def name(self) -> Text:
+        return "action_return_slots"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict
+    ) -> List[EventType]:
+        # getting slots back
+        orientation_slot = tracker.get_slot('veg_slot')
+        categories_slot = tracker.get_slot('cat_slot')
+        protein_slot = tracker.get_slot('prot_slot')
+        carbs_slot = tracker.get_slot('carbs_slot')
+        green_slot = tracker.get_slot('green_slot')
+
+        # write all dishes from db(Excel) in a python list
+        dishes_list = dt.values.tolist()
+
+        # split subcategories in different str and delete empty spaces
+        for i in range(len(dishes_list)):
+            sub_category_list = dishes_list[i][11].split(",")
+            scl = [x.strip() for x in sub_category_list]
+            dishes_list[i][11] = scl
+        print(dishes_list)
+
+        # add points to dish which fit to the information from slots - food direction like spanish, bavarian etc
+        for i in range(len(dishes_list)):
+            for j in range(len(dishes_list[i])):
+                for elem in range(len(categories_slot)):
+                    if categories_slot[elem] == dishes_list[i][j]:
+                        dishes_list[i].insert(len(dishes_list), 2.0)
+        print(dishes_list)
+
+        # add points for proteins on top of last points
+        for i in range(len(dishes_list)):
+            for prot in range(len(protein_slot)):
+                if protein_slot[prot] in (dishes_list[i][11]):
+                    # check if there is already a value for ranking the dish- if yes add score to this value,
+                    # if not append new score on last position
+                    if type(dishes_list[i][-1]) == float:
+                        dishes_list[i][-1] += 1.5
+                    else:
+                        dishes_list[i].insert(len(dishes_list), 1.5)
+        print(dishes_list)
+
+        # add points for carbs on top of last points (in case of no ranking, append a float on the end of the list)
+        for i in range(len(dishes_list)):
+            for carb in range(len(carbs_slot)):
+                if carbs_slot[carb] in (dishes_list[i][11]):
+                    if type(dishes_list[i][-1]) == float:
+                        dishes_list[i][-1] += 1.2
+                    else:
+                        dishes_list[i].insert(len(dishes_list), 1.2)
+        print(dishes_list)
+
+        # add points for carbs on top of last points (in case of no ranking, append a float on the end of the list)
+        for i in range(len(dishes_list)):
+            for green in range(len(green_slot)):
+                if green_slot[green] in (dishes_list[i][11]):
+                    if type(dishes_list[i][-1]) == float:
+                        dishes_list[i][-1] += 1.0
+                    else:
+                        dishes_list[i].insert(len(dishes_list), 1.0)
+        print(dishes_list)
+
+        # filtering the dish_list regarding to users choice about food orientation with list comprehension
+        filtered_dish_list = []
+        for i in range(len(dishes_list)):
+            if orientation_slot == "vegan":
+                filtered_dish_list = [x for x in dishes_list if 'vegan' in x]
+            elif orientation_slot == "vegetarian":
+                filtered_dish_list = [x for x in dishes_list if 'vegetarian' or 'vegan' in x]
+            elif orientation_slot == "eat_all":
+                filtered_dish_list = [x for x in dishes_list if 'eat_all' or 'vegan' or 'vegetarian' in x]
+
+        # if a dish has a score (type=float) append it to a new list and sort it from highest to lowest score
+        sorted_dish_list = []
+        for i in range(len(filtered_dish_list)):
+            if type(filtered_dish_list[i][-1]) == float:
+                sorted_dish_list.append(filtered_dish_list[i])
+                sorted_dish_list.sort(key=lambda x: x[-1], reverse=True)
+
+        return_dishes = {
+
+            "payload": sorted_dish_list,
+            "meta_data": {
+                "intent": '',
+                "Badge": "",
+                "title": "",
+                "subtitle": ''
+
+            }
+
+        }
+        dispatcher.utter_message(
+            json_message=return_dishes
+        )
+        return []

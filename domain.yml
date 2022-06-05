@@ -17,8 +17,10 @@ intents:
   - keep_on_protein
   - keep_on_carbs
   - keep_on_green
+  - tell_name
 
 entities:
+  - name_ent
   - veg_ent
   - cat_ent
   - prot_ent
@@ -26,12 +28,22 @@ entities:
   - green_ent
 
 slots:
+
+  name_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: name_ent
+        intent: tell_name
+
   veg_slot:
     type: text
     influence_conversation: false
     mappings:
       - type: from_entity
         entity: veg_ent
+        intent: choose
 
   cat_slot:
     type: list
@@ -39,6 +51,7 @@ slots:
     mappings:
       - type: from_entity
         entity: cat_ent
+        intent: keep_on_category
 
 
   prot_slot:
@@ -47,6 +60,7 @@ slots:
     mappings:
       - type: from_entity
         entity: prot_ent
+        intent: keep_on_protein
 
 
   carbs_slot:
@@ -55,6 +69,7 @@ slots:
     mappings:
       - type: from_entity
         entity: carbs_ent
+        intent: keep_on_carbs
 
 
   green_slot:
@@ -63,16 +78,19 @@ slots:
     mappings:
       - type: from_entity
         entity: green_ent
-
+        intent: keep_on_green
 
 #forms:
- # cat_slot_form:
-  # required_slots:
-   # - cat_slot
+# cat_slot_form:
+#  required_slots:
+#   - cat_slot
 
 responses:
   utter_greet:
   - text: "Hallo, wie geht es dir?"
+
+  utter_ask_for_name:
+  - text: "Wie lautet denn dein Name?"
 
   utter_cheer_up:
   - text: "Schau das muntert dich bestimmt auf"
@@ -115,6 +133,7 @@ actions:
 - ask_for_protein
 - ask_for_carbs
 - ask_for_green
+- action_return_slots
 
 
 session_config:

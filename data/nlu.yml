@@ -37,6 +37,13 @@ nlu:
     - auf wiedersehen
     - bis dahin
 
+- intent: tell_name
+  examples: |
+    - Mein Name ist [Franz](name_ent)
+    - Ich heiße [Kevin](name_ent)
+    - [Norman](name_ent)
+    - Ich bin [Julia](name_ent)
+
 - intent: affirm
   examples: |
     - yes
@@ -113,6 +120,8 @@ nlu:
     - spreche ich mit einem Bot?
     - spreche ich mit einem Menschen?
     - bot oder mensch
+    - wer bist du?
+    - was bist du?
 
 - intent: advice
   examples: |
@@ -138,18 +147,17 @@ nlu:
     - ich fühle mich [eat_all](veg_ent) zugehörig
     - ich bin [vegetarian](veg_ent)
 
-# TODO: delete text or also implement a solution for free text
 
 - intent: keep_on_category
   examples: |
-    - weiter [](cat_ent)
-    - weiter bitte [amerikanisch](cat_ent)
-    - aufgehts, mach weiter [bayerisch](cat_ent) [amerikanisch](cat_ent) [asiatisch](cat_ent)
-    - nächste Frage bitte [amerikanisch](cat_ent)
-    - ich möchte bitte weiter [asiatisch](cat_ent)
-    - ich will hier nichts wählen [spanisch](cat_ent) [bayerisch](cat_ent) 
-    - hab alles was ich will [amerikanisch](cat_ent) [spanisch](cat_ent) [asiatisch](cat_ent)
-    - ich habe alles gewählt was ich möchte [amerikanisch](cat_ent)
+    - [](cat_ent)
+    - [amerikanisch](cat_ent)
+    - [bayerisch](cat_ent) [amerikanisch](cat_ent) [asiatisch](cat_ent)
+    - [amerikanisch](cat_ent)
+    - [asiatisch](cat_ent)
+    - [spanisch](cat_ent) [bayerisch](cat_ent) 
+    - [amerikanisch](cat_ent) [spanisch](cat_ent) [asiatisch](cat_ent)
+    - [amerikanisch](cat_ent)
 
 - intent: keep_on_protein
   examples: | 
@@ -171,9 +179,6 @@ nlu:
     - [Salat](green_ent)
     - [Gemüse](green_ent) [Salat](green_ent)
     - [Kraut](green_ent) [Salat](green_ent) [Gemüse](green_ent)
-
-
-
 
 
 - intent: choose_food
