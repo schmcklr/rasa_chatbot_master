@@ -395,18 +395,18 @@ class ActionReturnSlots(Action):
         final_dish_list = [{}]
         for i in range(len(sorted_dish_list)):
             final_dish_list.append({
-                "title": sorted_dish_list[i][2],
-                "picture": sorted_dish_list[i][9],
-                "subtitle": sorted_dish_list[i][8],
-                "orientation": sorted_dish_list[i][1],
-                "dish_id": sorted_dish_list[i][0],
-                "price": sorted_dish_list[i][3],
-                "veg_label": sorted_dish_list[i][4],
-                "specials": sorted_dish_list[i][5],
-                "allergen": sorted_dish_list[i][6],
-                "course": sorted_dish_list[i][7],
-                "subcategory": sorted_dish_list[i][11],
-                "restaurant_id": sorted_dish_list[i][12]
+                "title": json.dumps(sorted_dish_list[i][2]).replace('"', ""),
+                "picture": json.dumps(sorted_dish_list[i][9]).replace('"', ""),
+                "subtitle": json.dumps(sorted_dish_list[i][8]).replace('"', ""),
+                "orientation": json.dumps(sorted_dish_list[i][1]).replace('"', ""),
+                "dish_id": json.dumps(sorted_dish_list[i][0]).replace('"', ""),
+                "price": json.dumps(sorted_dish_list[i][3]).replace('"', ""),
+                "veg_label": json.dumps(sorted_dish_list[i][4]).replace('"', ""),
+                "specials": json.dumps(sorted_dish_list[i][5]).replace('"', ""),
+                "allergen": json.dumps(sorted_dish_list[i][6]).replace('"', ""),
+                "course": json.dumps(sorted_dish_list[i][7]).replace('"', ""),
+                "subcategory": json.dumps(sorted_dish_list[i][11]).replace('"', ""),
+                "restaurant_id": json.dumps(sorted_dish_list[i][12]).replace('"', "")
             })
 
             return_dishes = {
