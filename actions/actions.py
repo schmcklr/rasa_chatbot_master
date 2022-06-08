@@ -338,7 +338,6 @@ class ActionReturnSlots(Action):
             sub_category_list = dishes_list[i][11].split(",")
             scl = [x.strip() for x in sub_category_list]
             dishes_list[i][11] = scl
-        print(dishes_list)
 
         # add points to dish which fit to the information from slots - food direction like spanish, bavarian etc
         for i in range(len(dishes_list)):
@@ -346,7 +345,6 @@ class ActionReturnSlots(Action):
                 for elem in range(len(categories_slot)):
                     if categories_slot[elem] == dishes_list[i][j]:
                         dishes_list[i].insert(len(dishes_list), 2.0)
-        print(dishes_list)
 
         # add points for proteins on top of last points
         for i in range(len(dishes_list)):
@@ -358,7 +356,6 @@ class ActionReturnSlots(Action):
                         dishes_list[i][-1] += 1.5
                     else:
                         dishes_list[i].insert(len(dishes_list), 1.5)
-        print(dishes_list)
 
         # add points for carbs on top of last points (in case of no ranking, append a float on the end of the list)
         for i in range(len(dishes_list)):
@@ -368,7 +365,6 @@ class ActionReturnSlots(Action):
                         dishes_list[i][-1] += 1.2
                     else:
                         dishes_list[i].insert(len(dishes_list), 1.2)
-        print(dishes_list)
 
         # add points for carbs on top of last points (in case of no ranking, append a float on the end of the list)
         for i in range(len(dishes_list)):
@@ -378,7 +374,6 @@ class ActionReturnSlots(Action):
                         dishes_list[i][-1] += 1.0
                     else:
                         dishes_list[i].insert(len(dishes_list), 1.0)
-        print(dishes_list)
 
         # filtering the dish_list regarding to users choice about food orientation with list comprehension
         filtered_dish_list = []
@@ -397,19 +392,20 @@ class ActionReturnSlots(Action):
                 sorted_dish_list.append(filtered_dish_list[i])
                 sorted_dish_list.sort(key=lambda x: x[-1], reverse=True)
 
+        final_dish_list = [{}]
+        for i in range(len(sorted_dish_list)):
+            final_dish_list.append({
+                "title": sorted_dish_list[i][2],
+                "picture": sorted_dish_list[i][9],
+                "subtitle": sorted_dish_list[i][8]
 
-        return_dishes = {
-            "payload": 'dishes_selection',
-            "data": json.dumps(sorted_dish_list),
-            "meta_data": {
-                "intent": '',
-                "Badge": "",
-                "title": "",
-                "subtitle": ''
+            })
+
+            return_dishes = {
+                "payload": 'dishes_selection',
+                "data": final_dish_list,
 
             }
-
-        }
         dispatcher.utter_message(
             json_message=return_dishes
         )
