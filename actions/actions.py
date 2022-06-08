@@ -5,6 +5,7 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 # Import of Excel DB - Data
+import json
 
 from actions import dataImport
 
@@ -396,9 +397,10 @@ class ActionReturnSlots(Action):
                 sorted_dish_list.append(filtered_dish_list[i])
                 sorted_dish_list.sort(key=lambda x: x[-1], reverse=True)
 
-        return_dishes = {
 
-            "payload": sorted_dish_list,
+        return_dishes = {
+            "payload": 'dishes_selection',
+            "data": json.dumps(sorted_dish_list),
             "meta_data": {
                 "intent": '',
                 "Badge": "",
