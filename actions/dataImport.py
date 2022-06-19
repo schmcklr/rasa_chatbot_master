@@ -46,6 +46,7 @@ sub_cats = pd.read_excel(
     sheet_name="Unterkategorien"
 )
 
+
 # get current time, needed for enquiry if restaurant open
 # now = datetime.now()
 # current_time = now.strftime("%H:%M:%S")

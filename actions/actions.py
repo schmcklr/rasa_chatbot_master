@@ -4,9 +4,9 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/custom-actions
 
-# Import of Excel DB - Data
 import json
 
+# Import of Excel DB - Data
 from actions import dataImport
 
 # Rasa SDK Imports
@@ -17,7 +17,7 @@ from rasa_sdk.events import EventType
 from rasa_sdk.types import DomainDict
 
 # imports from dataImport (DB-Excel)
-sc = dataImport.sub_cats
+suc = dataImport.sub_cats
 cb = dataImport.categories.Bezeichnung
 dt = dataImport.dishes
 
@@ -214,13 +214,12 @@ class ActionAskForProtein(Action):
     ) -> List[EventType]:
         orientation_slot = tracker.get_slot('veg_slot')
 
-        protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichnung'])]
+        protein_array = suc[(suc['Kategorie_ID'] == 2) & (suc['Bezeichnung'])]
 
         prot_buttons = [{"title": i, "payload": i} for i in
-                        protein_array.Bezeichung]
+                        protein_array.Bezeichnung]
 
         final_prot_buttons = []
-        
 
         label_protein = {
 
@@ -251,10 +250,10 @@ class ActionAskForCarbs(Action):
     def run(
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
-        carbs_array = sc[(sc['Kategorie_ID'] == 1) & (sc['Bezeichnung'])]
+        carbs_array = suc[(suc['Kategorie_ID'] == 1) & (suc['Bezeichnung'])]
 
         carbs_buttons = [{"title": i, "payload": i} for i in
-                         carbs_array.Bezeichung]
+                         carbs_array.Bezeichnung]
 
         label_carbs = {
 
@@ -285,10 +284,10 @@ class ActionAskForGreen(Action):
     def run(
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
-        green_array = sc[(sc['Kategorie_ID'] == 3) & (sc['Bezeichnung'])]
+        green_array = suc[(suc['Kategorie_ID'] == 3) & (suc['Bezeichnung'])]
 
         green_buttons = [{"title": i, "payload": i} for i in
-                         green_array.Bezeichung]
+                         green_array.Bezeichnung]
 
         label_green = {
 
