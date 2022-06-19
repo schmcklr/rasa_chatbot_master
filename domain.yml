@@ -1,5 +1,6 @@
 version: "3.1"
 
+
 intents:
   - greet
   - goodbye
@@ -10,47 +11,131 @@ intents:
   - bot_challenge
   - advice
   - no_advice
+  - choose_food
+  - choose
+  - keep_on_category
+  - keep_on_protein
+  - keep_on_carbs
+  - keep_on_green
+  - tell_name
+
+entities:
+  - name_ent
+  - veg_ent
+  - cat_ent
+  - prot_ent
+  - carbs_ent
+  - green_ent
+
+slots:
+
+  name_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: name_ent
+        intent: tell_name
+
+  veg_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: veg_ent
+        intent: choose
+
+  cat_slot:
+    type: list
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: cat_ent
+        intent: keep_on_category
+
+
+  prot_slot:
+    type: list
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: prot_ent
+        intent: keep_on_protein
+
+
+  carbs_slot:
+    type: list
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: carbs_ent
+        intent: keep_on_carbs
+
+
+  green_slot:
+    type: list
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: green_ent
+        intent: keep_on_green
+
+#forms:
+# cat_slot_form:
+#  required_slots:
+#   - cat_slot
 
 responses:
-
   utter_greet:
-  - text: "Hallo, wie geht es dir? "
+  - text: "Hallo, wie geht es dir?"
+
+  utter_ask_for_name:
+  - text: "Wie lautet denn dein Name?"
+
+  utter_cheer_up:
+  - text: "Schau das muntert dich bestimmt auf"
 
 
-  utter_start:
+  utter_support_question:
   - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weist du bereits was du essen möchtest?😜"
     buttons:
-    - title: "Beratung"
-      payload: "/advice"
-    - title: "Ich weiß was ich möchte"
-      payload: "/no_advice"
+      - title: "Beratung"
+        payload: "/advice"
+      - title: "Ich weiß was ich möchte"
+        payload: "/no_advice"
 
-  food_direction:
-  - text: "Weißt du schon welche Richtung?"
-    buttons:
-    - title: "Asiatisch"
-      payload: "/advice"
-    - title: "Indisch"
-      payload: "/no_advice"
-    - title: "Deutsch"
-      payload: "/no_advice"
-    - title: "Afrikanisch"
-      payload: "/no_advice"
-    - title: "Bayrisch"
-      payload: "/no_advice"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+  - text: "Hat dir das geholfen?"
 
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "Großartig, sehr gute Wahl!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Tschau Kakao"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "Ich bin ein Bot, der von Studenten der Universität Regensburg programmiert wurde."
+
+  utter_reply_advice:
+  - text: "Dafür ist Liefy die beratende Lieferbo(x)t doch da!!"
+
+
+actions:
+- food_direct
+- action_carousels
+- action_images
+- action_no_advice
+- ask_for_category
+- ask_for_veg
+- reply_to_veg
+- action_receive_veg
+- ask_for_protein
+- ask_for_carbs
+- ask_for_green
+- action_return_slots
+
 
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false

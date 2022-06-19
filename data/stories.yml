@@ -1,12 +1,73 @@
 version: "3.1"
 
 stories:
-
-- story: happy path
+- story: happy advice path
   steps:
-  - intent: greet
-  - action: utter_greet
-  - action: utter_start
-  - intent: advice
-  - action: food_direction
+    - intent: greet
+    - action: utter_support_question
+    - intent: advice
+ #   - action: utter_ask_for_name
+ #   - intent: tell_name
+    - action: ask_for_veg
+    - intent: choose
+      entities:
+      - veg_ent: eat_all
+    - slot_was_set:
+      - veg_slot: eat_all
+    - action: reply_to_veg
+    - action: ask_for_category
+    - intent: keep_on_category
+      entities:
+      - cat_ent: amerikanisch
+    - slot_was_set:
+      - cat_slot: amerikanisch
+   # - action: action_return_slots
+    - action: ask_for_protein
+    - intent: keep_on_protein
+      entities:
+      - prot_ent: Fleisch
+    - slot_was_set:
+      - prot_slot: Fleisch
+    - action: ask_for_carbs
+    - intent: keep_on_carbs
+      entities:
+      - carbs_ent: Kartoffel
+    - slot_was_set:
+      - carbs_slot: Kartoffel
+    - action: ask_for_green
+    - intent: keep_on_green
+      entities:
+      - green_ent: Salat
+    - slot_was_set:
+      - green_slot: Salat
+    - action: action_return_slots
 
+#    - action: utter_reply_advice
+#    - action: action_images
+#    - action: ask_for_category
+#   - intent: finish_choosing_category
+#   - action: action_carousels
+#   - intent: choose_food
+
+
+
+#- story: happy advice path II
+# steps:
+#  - intent: greet
+#   - action: utter_support_question
+#   - intent: advice
+#   - action: ask_for_veg
+#  - intent: choose
+#  - slot_was_set:
+#      - veg_slot: vegetarian
+#   - action: reply_to_veg
+#   - action: utter_happy
+
+
+
+- story: happy no advice path
+  steps:
+    - intent: greet
+    - action: utter_support_question
+    - intent: no_advice
+    - action: action_no_advice
