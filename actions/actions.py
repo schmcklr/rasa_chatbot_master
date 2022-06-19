@@ -215,10 +215,15 @@ class ActionAskForProtein(Action):
     ) -> List[EventType]:
         # TODO: alter Bezeichung to Bezeichnung typo
         # TODO: always add "Fleisch" and  "Tofu"
+        orientation_slot = tracker.get_slot('veg_slot')
+
         protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichung'])]
 
         prot_buttons = [{"title": i, "payload": i} for i in
                         protein_array.Bezeichung]
+
+        final_prot_buttons = []
+
 
         label_protein = {
 
