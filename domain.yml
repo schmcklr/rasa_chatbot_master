@@ -18,6 +18,9 @@ intents:
   - keep_on_carbs
   - keep_on_green
   - tell_name
+  - reset:
+        name: reset
+        triggers: action_reset_full
 
 entities:
   - name_ent
@@ -120,6 +123,10 @@ responses:
   utter_reply_advice:
   - text: "Dafür ist Liefy die beratende Lieferbo(x)t doch da!!"
 
+  utter_please_rephrase:
+  - text: "Entschuldigung, aber das habe ich nicht ganz verstanden. Bitte triff deine Wahl über die Buttons."
+
+
 
 actions:
 - food_direct
@@ -134,6 +141,7 @@ actions:
 - ask_for_carbs
 - ask_for_green
 - action_return_slots
+- action_reset_full
 
 
 session_config:

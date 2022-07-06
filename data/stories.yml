@@ -21,7 +21,6 @@ stories:
       - cat_ent: amerikanisch
     - slot_was_set:
       - cat_slot: amerikanisch
-   # - action: action_return_slots
     - action: ask_for_protein
     - intent: keep_on_protein
       entities:

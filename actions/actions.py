@@ -1,4 +1,4 @@
-# This files contains your custom actions which can be used to run
+# This files contains our custom actions which can be used to run
 # custom Python code.
 #
 # See this guide on how to implement these action:
@@ -6,18 +6,16 @@
 
 import json
 
-# Import of Excel DB - Data
 from actions import dataImport
 
 # Rasa SDK Imports
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import EventType
-from rasa_sdk.types import DomainDict
+from rasa_sdk.events import EventType, AllSlotsReset, Restarted
 
 # imports from dataImport (DB-Excel)
-suc = dataImport.sub_cats
+sc = dataImport.sub_cats
 cb = dataImport.categories.Bezeichnung
 dt = dataImport.dishes
 
@@ -212,14 +210,21 @@ class ActionAskForProtein(Action):
     def run(
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
+
         orientation_slot = tracker.get_slot('veg_slot')
 
-        protein_array = suc[(suc['Kategorie_ID'] == 2) & (suc['Bezeichnung'])]
+        if orientation_slot == 'vegan':
+            protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichnung']) &
+                               (sc['Essverhalten'] == 'vegan')]
+        elif orientation_slot == 'vegetarian':
+            protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichnung']) &
+                               (sc['Essverhalten'] == 'vegan') & (sc['Essverhalten'] == 'vegetarian')]
+        elif orientation_slot == 'eat_all':
+            protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichnung']) &
+                               (sc['Essverhalten'])]
 
         prot_buttons = [{"title": i, "payload": i} for i in
                         protein_array.Bezeichnung]
-
-        final_prot_buttons = []
 
         label_protein = {
 
@@ -250,7 +255,18 @@ class ActionAskForCarbs(Action):
     def run(
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
-        carbs_array = suc[(suc['Kategorie_ID'] == 1) & (suc['Bezeichnung'])]
+
+        orientation_slot = tracker.get_slot('veg_slot')
+
+        if orientation_slot == 'vegan':
+            carbs_array = sc[(sc['Kategorie_ID'] == 1) & (sc['Bezeichnung']) &
+                             (sc['Essverhalten'] == 'vegan')]
+        elif orientation_slot == 'vegetarian':
+            carbs_array = sc[(sc['Kategorie_ID'] == 1) & (sc['Bezeichnung']) &
+                             (sc['Essverhalten'] == 'vegan') & (sc['Essverhalten'] == 'vegetarian')]
+        elif orientation_slot == 'eat_all':
+            carbs_array = sc[(sc['Kategorie_ID'] == 1) & (sc['Bezeichnung']) &
+                             (sc['Essverhalten'])]
 
         carbs_buttons = [{"title": i, "payload": i} for i in
                          carbs_array.Bezeichnung]
@@ -284,7 +300,18 @@ class ActionAskForGreen(Action):
     def run(
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
-        green_array = suc[(suc['Kategorie_ID'] == 3) & (suc['Bezeichnung'])]
+
+        orientation_slot = tracker.get_slot('veg_slot')
+
+        if orientation_slot == 'vegan':
+            green_array = sc[(sc['Kategorie_ID'] == 3) & (sc['Bezeichnung']) &
+                             (sc['Essverhalten'] == 'vegan')]
+        elif orientation_slot == 'vegetarian':
+            green_array = sc[(sc['Kategorie_ID'] == 3) & (sc['Bezeichnung']) &
+                             (sc['Essverhalten'] == 'vegan') & (sc['Essverhalten'] == 'vegetarian')]
+        elif orientation_slot == 'eat_all':
+            green_array = sc[(sc['Kategorie_ID'] == 3) & (sc['Bezeichnung']) &
+                             (sc['Essverhalten'])]
 
         green_buttons = [{"title": i, "payload": i} for i in
                          green_array.Bezeichnung]
@@ -390,21 +417,22 @@ class ActionReturnSlots(Action):
                 sorted_dish_list.append(filtered_dish_list[i])
                 sorted_dish_list.sort(key=lambda x: x[-1], reverse=True)
 
+        # this final list splits above list to key value pairs and is prepared to get send to FE
         final_dish_list = [{}]
         for i in range(len(sorted_dish_list)):
             final_dish_list.append({
-                "title": json.dumps(sorted_dish_list[i][2]).replace('"', ""),
-                "picture": json.dumps(sorted_dish_list[i][9]).replace('"', ""),
-                "subtitle": json.dumps(sorted_dish_list[i][8]).replace('"', ""),
-                "orientation": json.dumps(sorted_dish_list[i][1]).replace('"', ""),
-                "dish_id": json.dumps(sorted_dish_list[i][0]).replace('"', ""),
-                "price": json.dumps(sorted_dish_list[i][3]).replace('"', ""),
-                "veg_label": json.dumps(sorted_dish_list[i][4]).replace('"', ""),
-                "specials": json.dumps(sorted_dish_list[i][5]).replace('"', ""),
-                "allergen": json.dumps(sorted_dish_list[i][6]).replace('"', ""),
-                "course": json.dumps(sorted_dish_list[i][7]).replace('"', ""),
-                "subcategory": json.dumps(sorted_dish_list[i][11]).replace('"', ""),
-                "restaurant_id": json.dumps(sorted_dish_list[i][12]).replace('"', "")
+                "title": json.dumps(sorted_dish_list[i][2], ensure_ascii=False).replace('"', ""),
+                "picture": json.dumps(sorted_dish_list[i][9], ensure_ascii=False).replace('"', ""),
+                "subtitle": json.dumps(sorted_dish_list[i][8], ensure_ascii=False).replace('"', ""),
+                "orientation": json.dumps(sorted_dish_list[i][1], ensure_ascii=False).replace('"', ""),
+                "dish_id": json.dumps(sorted_dish_list[i][0], ensure_ascii=False).replace('"', ""),
+                "price": json.dumps(sorted_dish_list[i][3], ensure_ascii=False).replace('"', ""),
+                "veg_label": json.dumps(sorted_dish_list[i][4], ensure_ascii=False).replace('"', ""),
+                "specials": json.dumps(sorted_dish_list[i][5], ensure_ascii=False).replace('"', ""),
+                "allergen": json.dumps(sorted_dish_list[i][6], ensure_ascii=False).replace('"', ""),
+                "course": json.dumps(sorted_dish_list[i][7], ensure_ascii=False).replace('"', ""),
+                "subcategory": json.dumps(sorted_dish_list[i][11], ensure_ascii=False).replace('"', ""),
+                "restaurant_id": json.dumps(sorted_dish_list[i][12], ensure_ascii=False).replace('"', "")
             })
 
             return_dishes = {
@@ -416,3 +444,12 @@ class ActionReturnSlots(Action):
             json_message=return_dishes
         )
         return []
+
+
+class ActionResetFull(Action):
+    def name(self):
+        return "action_reset_full"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_template("utter_reset_full", tracker)
+        return [AllSlotsReset(None), Restarted(None)]
