@@ -1,12 +1,9 @@
 # This files contains our custom actions which can be used to run
 # custom Python code.
 #
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
+# See code comments or our documentation for more information
 
 import json
-
-from actions import dataImport
 
 # Rasa SDK Imports
 from typing import Any, Text, Dict, List
@@ -15,85 +12,11 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import EventType, AllSlotsReset, Restarted
 
 # imports from dataImport (DB-Excel)
+from actions import dataImport
+
 sc = dataImport.sub_cats
 cb = dataImport.categories.Bezeichnung
 dt = dataImport.dishes
-
-
-class ActionFoodDirect(Action):
-    # return the name of the action - pay attention to the spelling
-    def name(self) -> Text:
-        return 'food_direct'
-
-    # collectingDispatcher allows to send back messages to the user
-    async def run(
-            self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message("Bitte wähle eine Richtung oder klicke auf weiter:", buttons=[
-            {"payload": "/ital", "title": "italienisch"},
-            {"payload": "/amerik", "title": "amerikanisch"},
-            {"payload": "/skip_direction", "title": "Weiter"},
-        ])
-        return []
-
-
-class ActionCarousel(Action):
-    def name(self) -> Text:
-        return "action_carousels"
-
-    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) \
-            -> List[Dict[Text, Any]]:
-        carousel = {
-            "payload": 'cardsCarousel',
-            "data": [
-                {
-                    "image": "https://image.jimcdn.com/app/cms/image/transf/dimension=890x10000:format=jpg"
-                             "/path/s08487bbdb796bdb9/image/i602f6404db8c165c/version/1614547865/rezepte-aus"
-                             "-essen-trinken.jpg",
-                    "title": "Leckeres Essen",
-                    "description": "Hier siehst du eines unserer Essen",
-                    "buttons": [
-                        {
-                            "title": "Nehme ich",
-                            "payload": "/choose_food",
-                            "type": "postback"
-                        },
-
-                        {
-                            "title": "Weiter",
-                            "payload": "/next_food",
-                            "type": "postback"
-                        }
-                    ]
-                },
-
-                {
-                    "image": "https://image.jimcdn.com/app/cms/image/transf/dimension=890x10000:format=jpg"
-                             "/path/s08487bbdb796bdb9/image/i602f6404db8c165c/version/1614547865/rezepte-aus"
-                             "-essen-trinken.jpg",
-                    "title": "Leckeres Essen",
-                    "description": "Hier siehst du eines unserer Essen",
-                    "buttons": [
-                        {
-                            "title": "Zweites Beispiel",
-                            "payload": "/choose_food",
-                            "type": "postback"
-                        },
-
-                        {
-                            "title": "Hallo",
-                            "payload": "/next_food",
-                            "type": "postback"
-                        }
-                    ]
-                },
-
-            ]
-        }
-        dispatcher.utter_message(json_message=carousel)
-        return []
 
 
 class ActionImage(Action):
@@ -218,7 +141,9 @@ class ActionAskForProtein(Action):
                                (sc['Essverhalten'] == 'vegan')]
         elif orientation_slot == 'vegetarian':
             protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichnung']) &
-                               (sc['Essverhalten'] == 'vegan') & (sc['Essverhalten'] == 'vegetarian')]
+                               (sc['Essverhalten'] == 'vegan') |
+                               (sc['Kategorie_ID'] == 2) & (sc['Bezeichnung']) &
+                               (sc['Essverhalten'] == 'vegetarian')]
         elif orientation_slot == 'eat_all':
             protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichnung']) &
                                (sc['Essverhalten'])]
@@ -263,7 +188,9 @@ class ActionAskForCarbs(Action):
                              (sc['Essverhalten'] == 'vegan')]
         elif orientation_slot == 'vegetarian':
             carbs_array = sc[(sc['Kategorie_ID'] == 1) & (sc['Bezeichnung']) &
-                             (sc['Essverhalten'] == 'vegan') & (sc['Essverhalten'] == 'vegetarian')]
+                             (sc['Essverhalten'] == 'vegan') |
+                             (sc['Kategorie_ID'] == 1) & (sc['Bezeichnung']) &
+                             (sc['Essverhalten'] == 'vegetarian')]
         elif orientation_slot == 'eat_all':
             carbs_array = sc[(sc['Kategorie_ID'] == 1) & (sc['Bezeichnung']) &
                              (sc['Essverhalten'])]
@@ -308,7 +235,9 @@ class ActionAskForGreen(Action):
                              (sc['Essverhalten'] == 'vegan')]
         elif orientation_slot == 'vegetarian':
             green_array = sc[(sc['Kategorie_ID'] == 3) & (sc['Bezeichnung']) &
-                             (sc['Essverhalten'] == 'vegan') & (sc['Essverhalten'] == 'vegetarian')]
+                             (sc['Essverhalten'] == 'vegan') |
+                             (sc['Kategorie_ID'] == 3) & (sc['Bezeichnung']) &
+                             (sc['Essverhalten'] == 'vegetarian')]
         elif orientation_slot == 'eat_all':
             green_array = sc[(sc['Kategorie_ID'] == 3) & (sc['Bezeichnung']) &
                              (sc['Essverhalten'])]
@@ -418,6 +347,7 @@ class ActionReturnSlots(Action):
                 sorted_dish_list.sort(key=lambda x: x[-1], reverse=True)
 
         # this final list splits above list to key value pairs and is prepared to get send to FE
+        # ensure ascii is false bc of german letters (ä,ö,ü,ß) therefore json dumbs uses unicode
         final_dish_list = [{}]
         for i in range(len(sorted_dish_list)):
             final_dish_list.append({

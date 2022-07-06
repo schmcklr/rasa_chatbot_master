@@ -83,10 +83,7 @@ slots:
         entity: green_ent
         intent: keep_on_green
 
-#forms:
-# cat_slot_form:
-#  required_slots:
-#   - cat_slot
+
 
 responses:
   utter_greet:
@@ -129,8 +126,6 @@ responses:
 
 
 actions:
-- food_direct
-- action_carousels
 - action_images
 - action_no_advice
 - ask_for_category
