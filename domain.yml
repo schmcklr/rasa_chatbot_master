@@ -18,9 +18,7 @@ intents:
   - keep_on_carbs
   - keep_on_green
   - tell_name
-  - reset:
-        name: reset
-        triggers: action_reset_full
+
 
 entities:
   - name_ent

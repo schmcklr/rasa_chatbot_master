@@ -185,8 +185,3 @@ nlu:
   examples: | 
     - ich möchte gerne dieses Essen bestellen
     - das will ich!
-
-- intent: reset
-  examples: |
-    - restart
-    - reset

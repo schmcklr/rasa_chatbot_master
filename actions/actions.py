@@ -376,6 +376,8 @@ class ActionReturnSlots(Action):
         return []
 
 
+# this would be the action for reset after one workflow, but we need an intent from fe which triggers action in the end
+# worst case we are going to use /restart with this all slots are deleted and we can chat again with our bot
 class ActionResetFull(Action):
     def name(self):
         return "action_reset_full"
