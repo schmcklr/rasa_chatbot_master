@@ -95,7 +95,7 @@ responses:
 
 
   utter_support_question:
-  - text: "Hallo, ich bin Liefy dein Restaurants Beratungs-Bot. Weist du bereits was du essen möchtest?😜"
+  - text: "Hallo, ich bin Liefy - deine beratende Lieferbox. Bist du dir unschlüssig, was du gerne Essen möchtest? Kein Problem, ich helfe dir gerne weiter und berate dich nach deinen individuellen Wünschen!😊"
     buttons:
       - title: "Beratung"
         payload: "/advice"

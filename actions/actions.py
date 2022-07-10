@@ -17,6 +17,7 @@ from actions import dataImport
 sc = dataImport.sub_cats
 cb = dataImport.categories.Bezeichnung
 dt = dataImport.dishes
+rl = dataImport.restaurants
 
 
 class ActionImage(Action):
