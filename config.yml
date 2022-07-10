@@ -9,8 +9,6 @@ language: de
 pipeline:
 # some messages might receive a low classification confidence. FallbackClassifier helps to handle
 # out-of-scope messages gracefully
-  # - name: FallbackClassifier
-   #  threshold: 0.7
    - name: WhitespaceTokenizer
    - name: LexicalSyntacticFeaturizer
    - name: CountVectorsFeaturizer
@@ -20,22 +18,20 @@ pipeline:
      max_ngram: 4
    - name: DIETClassifier
      epochs: 100
-     entity_recognition: False
+     entity_recognition: True
+   - name: FallbackClassifier
+     threshold: 0.7
    - name: RegexEntityExtractor
      use_lookup_tables: True
 
-# Configuration for Rasa Core.
-# https://rasa.com/docs/rasa/core/policies/
+
 policies:
-# # See https://rasa.com/docs/rasa/policies for more information.
   - name: MemoizationPolicy
   - name: RulePolicy
-#  - name: UnexpectedTEDIntentPolicy
+# - name: UnexpectedTEDIntentPolicy
   - name: TEDPolicy
     constrain_similarities: true
     max_history: 5
     epochs: 100
-#     max_history: 5
-#     epochs: 100
-# - name: FormPolicy
+
 

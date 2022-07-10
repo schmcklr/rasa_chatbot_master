@@ -1,12 +1,7 @@
 # import of restaurant data
 # from datetime import datetime
 import pandas as pd
-from openpyxl import load_workbook
 
-from iteration_utilities import deepflatten
-
-# import for sorting list
-import operator
 
 # import calendar
 
@@ -59,12 +54,5 @@ sub_cats = pd.read_excel(
 pd.set_option('display.max_columns', 20)
 pd.set_option('display.width', 2000)
 
-# example enquiries
-# TODO: function that select all restaurants which are open right now
-# print(restaurants[restaurants["Öffnet_Abends"] != "durchgehend geöffnet"])
-# display one column of one restaurant
-# print(restaurants[restaurants["Restaurant_Name"] == "Namaste"].Beschreibung)
 
-# print(ingredients.Kategorie)
-# print(sub_cats)
 

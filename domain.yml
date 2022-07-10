@@ -4,10 +4,6 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
   - advice
   - no_advice
@@ -88,14 +84,10 @@ responses:
   - text: "Hallo, wie geht es dir?"
 
   utter_ask_for_name:
-  - text: "Wie lautet denn dein Name?"
-
-  utter_cheer_up:
-  - text: "Schau das muntert dich bestimmt auf"
-
+  - text: "Wie lautet denn dein Name mein Feinschmecker? 😋"
 
   utter_support_question:
-  - text: "Hallo, ich bin Liefy - deine beratende Lieferbox. Bist du dir unschlüssig, was du gerne Essen möchtest? Kein Problem, ich helfe dir gerne weiter und berate dich nach deinen individuellen Wünschen!😊"
+  - text: "Hallo, ich bin Liefy - deine beratende Lieferbox. Bist du dir unschlüssig, was du gerne Essen möchtest? Kein Problem, ich helfe dir weiter und berate dich nach deinen individuellen Wünschen!😊 "
     buttons:
       - title: "Beratung"
         payload: "/advice"
@@ -103,23 +95,20 @@ responses:
         payload: "/no_advice"
 
 
-  utter_did_that_help:
-  - text: "Hat dir das geholfen?"
-
   utter_happy:
-  - text: "Großartig, sehr gute Wahl!"
+  - text: "Tolle Wahl! Du hast einen sehr guten Geschmack 😊"
 
   utter_goodbye:
-  - text: "Tschau Kakao"
+  - text: "Gerne berate ich dich jederzeit wieder! Bis hoffentlich ganz bald 👋"
 
   utter_iamabot:
   - text: "Ich bin ein Bot, der von Studenten der Universität Regensburg programmiert wurde."
 
   utter_reply_advice:
-  - text: "Dafür ist Liefy die beratende Lieferbo(x)t doch da!!"
+  - text: "Dafür ist Liefy die beratende Lieferbo(x)t doch da!"
 
   utter_please_rephrase:
-  - text: "Entschuldigung, aber das habe ich nicht ganz verstanden. Bitte triff deine Wahl über die Buttons."
+  - text: "Entschuldigung, aber das habe ich nicht ganz verstanden.😭 Bitte triff deine Wahl über die Buttons."
 
 
 
@@ -134,7 +123,6 @@ actions:
 - ask_for_carbs
 - ask_for_green
 - action_return_slots
-- action_reset_full
 
 
 session_config:

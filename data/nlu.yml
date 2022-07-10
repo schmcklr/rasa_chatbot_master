@@ -36,6 +36,8 @@ nlu:
     - bis dann
     - auf wiedersehen
     - bis dahin
+    
+    
 
 - intent: tell_name
   examples: |
@@ -44,74 +46,6 @@ nlu:
     - [Norman](name_ent)
     - Ich bin [Julia](name_ent)
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - ja
-    - indeed
-    - sicher
-    - klaro
-    - ok
-    - aber sicher
-    - freilich
-    - na klar
-    - auf jedenfall
-    - das hört sich gut an
-    - korrekt
-    - weiter
-
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - nein
-    - ne
-    - ich denke eher nicht
-    - ich mag das nicht
-    - ich will das nicht
-    - bitte nicht
-    - zurück
-    - stopp
-    - nicht wirklich
-    
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - wonderful
-    - wunderbar
-    - perfekt
-    - ich fühle mich gut
-    - mir gehts es gut
-    - mir geht es sehr gut
-    - ich bin ok
-    - mir geht es fantastisch
-    - sehr gut
-    - wunderbar
-    - alles prima
-    - alles ok
-    - extrem gut
-    
-
-- intent: mood_unhappy
-  examples: |
-    - ich bin traurig
-    - I am sad
-    - ich fühl mich nicht so gut
-    - mir geht es schlecht
-    - naja
-    - geht mir nicht so gut
-    - mir ist schlecht
-    - ich habe schmerzen
-    - mir tut das weh
-    - traurig
-    - I don't feel very well
-    - I am disappointed
-    - unglücklich 
 
 - intent: bot_challenge
   examples: |
@@ -185,3 +119,5 @@ nlu:
   examples: | 
     - ich möchte gerne dieses Essen bestellen
     - das will ich!
+
+

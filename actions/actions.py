@@ -20,22 +20,13 @@ dt = dataImport.dishes
 rl = dataImport.restaurants
 
 
-class ActionImage(Action):
-    def name(self) -> Text:
-        return "action_images"
-
-    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
-        dispatcher.utter_message(image="https://img.freepik.com/vektoren-kostenlos/netter-box-charakter-laeuft_161751"
-                                       "-1640.jpg")
-        return []
-
-
 class ActionNoAdvice(Action):
     def name(self) -> Text:
         return "action_no_advice"
 
     async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
-        dispatcher.utter_message(text="Was du brauchst meine Hilfe gar nicht, dann vielleicht beim nächsten Mal!",
+        user_name = tracker.get_slot('name_slot')
+        dispatcher.utter_message(text=f"Was du brauchst meine Hilfe gar nicht {user_name}, dann vielleicht beim nächsten Mal!",
                                  image="https://img.freepik.com/vektoren-kostenlos/netter-box-charakter-laeuft_161751"
                                        "-1640.jpg")
         return []
@@ -53,8 +44,9 @@ class ActionAskForVegetarian(Action):
             tracker: Tracker,
             domain: Dict
     ) -> List[EventType]:
+        user_name = tracker.get_slot('name_slot')
         dispatcher.utter_message(
-            text="Bist du Vegetarier, Vegan oder Allesesser?:",
+            text=f"{user_name} bist du vegetarisch, vegan oder isst du alles?",
             buttons=[{"payload": "/choose{\"veg_ent\": \"eat_all\"}", "title": "Allesesser"},
                      {"payload": "/choose{\"veg_ent\": \"vegan\"}", "title": "Vegan"},
                      {"payload": "/choose{\"veg_ent\": \"vegetarian\"}", "title": "Vegetarier"}]
@@ -75,6 +67,7 @@ class ActionReplyToVegetarian(Action):
             tracker: Tracker,
             domain: Dict
     ) -> List[EventType]:
+        user_name = tracker.get_slot('name_slot')
         get_veg_slot = tracker.get_slot('veg_slot')
 
         # reply to the user that veg decision is saved in a slot - bot will remember
@@ -88,7 +81,7 @@ class ActionReplyToVegetarian(Action):
             reply = "no_valid_veg_slot_recognized_failure"
 
         dispatcher.utter_message(
-            text=f"Gut ich merke mir, dass du {reply} bist!"
+            text=f"Gut {user_name} ich merke mir, dass du {reply} bist! In nur 4 Schritten gelangst du nun zu deinem Wunschgericht 😊"
         )
         return []
 
@@ -118,7 +111,7 @@ class ActionAskForCategory(Action):
             }}
 
         dispatcher.utter_message(
-            text="Bitte wähle eine Essensrichtung oder klicke auf weiter:", buttons=cat_buttons,
+            buttons=cat_buttons,
             json_message=label_cat
 
         )
@@ -167,7 +160,7 @@ class ActionAskForProtein(Action):
         }
 
         dispatcher.utter_message(
-            text="Wähle deine Lieblingsproteine:", buttons=prot_buttons,
+            buttons=prot_buttons,
             json_message=label_protein
         )
         return []
@@ -206,7 +199,7 @@ class ActionAskForCarbs(Action):
             "meta_data": {
                 "intent": '/keep_on_carbs{"carbs_ent": ',
                 "Badge": "Schritt 3:",
-                "title": "Wähle deine Carbs",
+                "title": "Wähle deine Kohlenhydrate",
                 "subtitle": 'Wenn du fertig bist klicke auf "Weiter"'
 
             }
@@ -214,7 +207,7 @@ class ActionAskForCarbs(Action):
         }
 
         dispatcher.utter_message(
-            text="Wähle deine Lieblingscarbs:", buttons=carbs_buttons,
+            buttons=carbs_buttons,
             json_message=label_carbs
         )
         return []
@@ -253,7 +246,7 @@ class ActionAskForGreen(Action):
             "meta_data": {
                 "intent": '/keep_on_green{"green_ent": ',
                 "Badge": "Schritt 4:",
-                "title": "Wähle dein Green",
+                "title": "Wähle deine Greens",
                 "subtitle": 'Wenn du fertig bist klicke auf "Weiter"'
 
             }
@@ -261,7 +254,7 @@ class ActionAskForGreen(Action):
         }
 
         dispatcher.utter_message(
-            text="Wähle dein Lieblingsgreen:", buttons=green_buttons,
+            buttons=green_buttons,
             json_message=label_green
         )
         return []
@@ -278,6 +271,9 @@ class ActionReturnSlots(Action):
             tracker: Tracker,
             domain: Dict
     ) -> List[EventType]:
+
+        user_name = tracker.get_slot('name_slot')
+
         # getting slots back
         orientation_slot = tracker.get_slot('veg_slot')
         categories_slot = tracker.get_slot('cat_slot')
@@ -372,17 +368,9 @@ class ActionReturnSlots(Action):
 
             }
         dispatcher.utter_message(
+            text=f"{user_name} gemäß deiner Auswahl habe ich leckere Gerichte für dich gefunden, die ideal zu dir passen!😍 Bitte wähle dein Lieblingsgericht!",
             json_message=return_dishes
         )
         return []
 
 
-# this would be the action for reset after one workflow, but we need an intent from fe which triggers action in the end
-# worst case we are going to use /restart with this all slots are deleted and we can chat again with our bot
-class ActionResetFull(Action):
-    def name(self):
-        return "action_reset_full"
-
-    def run(self, dispatcher, tracker, domain):
-        dispatcher.utter_template("utter_reset_full", tracker)
-        return [AllSlotsReset(None), Restarted(None)]
