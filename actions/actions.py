@@ -370,7 +370,8 @@ class ActionReturnSlots(Action):
 
             }
         dispatcher.utter_message(
-            text=f"{user_name} gemäß deiner Auswahl habe ich leckere Gerichte für dich gefunden, die ideal zu dir passen!😍 Bitte wähle dein Lieblingsgericht!",
+            text=f"{user_name} gemäß deiner Auswahl habe ich leckere Gerichte für dich gefunden, die ideal zu dir "
+                 f"passen!😍 Bitte wähle dein Lieblingsgericht!",
             json_message=return_dishes
         )
         return []

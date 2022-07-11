@@ -47,7 +47,6 @@ stories:
     - action: action_restart
 
 
-
 - story: happy no advice path
   steps:
     - intent: greet
