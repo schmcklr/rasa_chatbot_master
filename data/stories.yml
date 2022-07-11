@@ -6,12 +6,12 @@ stories:
     - intent: greet
     - action: utter_support_question
     - intent: advice
-   # - action: utter_ask_for_name
-   # - intent: tell_name
-   #   entities:
-   #   - name_ent: peter
-   # - slot_was_set:
-   #   - name_slot: peter
+    - action: utter_ask_for_name
+    - intent: tell_name
+      entities:
+      - name_ent: peter
+    - slot_was_set:
+      - name_slot: peter
     - action: ask_for_veg
     - intent: choose
       entities:

@@ -344,7 +344,7 @@ class ActionReturnSlots(Action):
                 sorted_dish_list.sort(key=lambda x: x[-1], reverse=True)
 
         # this final list splits above list to key value pairs and is prepared to get send to FE
-        # ensure ascii is false bc of german letters (ä,ö,ü,ß) therefore json dumbs uses unicode
+        # ensure ascii is false bc of german letters (ä,ö,ü,ß) - now json dumbs uses unicode
         final_dish_list = [{}]
         for i in range(len(sorted_dish_list)):
             final_dish_list.append({
@@ -359,7 +359,9 @@ class ActionReturnSlots(Action):
                 "allergen": json.dumps(sorted_dish_list[i][6], ensure_ascii=False).replace('"', ""),
                 "course": json.dumps(sorted_dish_list[i][7], ensure_ascii=False).replace('"', ""),
                 "subcategory": json.dumps(sorted_dish_list[i][11], ensure_ascii=False).replace('"', ""),
-                "restaurant_id": json.dumps(sorted_dish_list[i][12], ensure_ascii=False).replace('"', "")
+                "restaurant_id": json.dumps(sorted_dish_list[i][12], ensure_ascii=False).replace('"', ""),
+                "restaurant_name": json.dumps(sorted_dish_list[i][13], ensure_ascii=False).replace('"', ""),
+                "restaurant_link": json.dumps(sorted_dish_list[i][14], ensure_ascii=False).replace('"', "")
             })
 
             return_dishes = {
