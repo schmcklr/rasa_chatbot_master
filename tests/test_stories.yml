@@ -2,90 +2,75 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: happy path 1
+- story: happy advice path
   steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
+    - user: |
+       Hallo
+      intent: greet
+    - action: utter_support_question
+    - intent: advice
+    - action: utter_ask_for_name
+    - user: |
+        Peter
+    - intent: tell_name
+      entities:
+      - name_ent: peter
+    - slot_was_set:
+      - name_slot: peter
+    - action: ask_for_veg
+    - intent: choose
+      entities:
+      - veg_ent: eat_all
+    - slot_was_set:
+      - veg_slot: eat_all
+    - action: reply_to_veg
+    - action: ask_for_category
+    - intent: keep_on_category
+      entities:
+      - cat_ent: amerikanisch
+    - slot_was_set:
+      - cat_slot: amerikanisch
+    - action: ask_for_protein
+    - intent: keep_on_protein
+      entities:
+      - prot_ent: Fleisch
+    - slot_was_set:
+      - prot_slot: Fleisch
+    - action: ask_for_carbs
+    - intent: keep_on_carbs
+      entities:
+      - carbs_ent: Kartoffel
+    - slot_was_set:
+      - carbs_slot: Kartoffel
+    - action: ask_for_green
+    - intent: keep_on_green
+      entities:
+      - green_ent: Salat
+    - slot_was_set:
+      - green_slot: Salat
+    - action: action_return_slots
+    - action: action_restart
 
-- story: happy path 2
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
 
-- story: sad path 1
+- story: bad advice path
   steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      yes
-    intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      not really
-    intent: deny
-  - action: utter_goodbye
-
-- story: sad path 3
-  steps:
-  - user: |
-      hi
-    intent: greet
-  - action: utter_greet
-  - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      no
-    intent: deny
-  - action: utter_goodbye
-
-- story: say goodbye
-  steps:
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: bot challenge
-  steps:
-  - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+    - user: |
+       Hallo
+      intent: greet
+    - action: utter_support_question
+    - intent: advice
+    - action: utter_ask_for_name
+    - user: |
+        Peter
+    - intent: tell_name
+      entities:
+      - name_ent: peter
+    - slot_was_set:
+      - name_slot: peter
+    - action: ask_for_veg
+    - user: |
+        Wer ist Bundeskanzler von Deutschland?
+    - intent: nlu_fallback
+    - action: utter_please_rephrase
+    - action: action_restart
+    - action: utter_support_question

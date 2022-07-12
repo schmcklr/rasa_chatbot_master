@@ -84,7 +84,7 @@ responses:
   - text: "Hallo, wie geht es dir?"
 
   utter_ask_for_name:
-  - text: "Wie lautet denn dein Name mein Feinschmecker? 😋"
+  - text: "Verrätst du mir bitte deinen Namen? 😋"
 
   utter_support_question:
   - text: "Hallo, ich bin Liefy - deine beratende Lieferbox. Bist du dir unschlüssig, was du gerne Essen möchtest? Kein Problem, ich helfe dir weiter und berate dich nach deinen individuellen Wünschen!😊 "

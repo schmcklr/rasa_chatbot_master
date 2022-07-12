@@ -24,3 +24,9 @@ rules:
   - action: utter_please_rephrase
   - action: action_restart
   - action: utter_support_question
+
+- rule: only ask for name after support_question
+  steps:
+  - intent: advice
+  - action: utter_ask_for_name
+

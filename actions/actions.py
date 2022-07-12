@@ -26,7 +26,7 @@ class ActionNoAdvice(Action):
 
     async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
         user_name = tracker.get_slot('name_slot')
-        dispatcher.utter_message(text=f"Was du brauchst meine Hilfe gar nicht {user_name}, dann vielleicht beim nächsten Mal!",
+        dispatcher.utter_message(text=f"Was du brauchst meine Hilfe gar nicht, dann vielleicht beim nächsten Mal!",
                                  image="https://img.freepik.com/vektoren-kostenlos/netter-box-charakter-laeuft_161751"
                                        "-1640.jpg")
         return []
@@ -46,7 +46,7 @@ class ActionAskForVegetarian(Action):
     ) -> List[EventType]:
         user_name = tracker.get_slot('name_slot')
         dispatcher.utter_message(
-            text=f"{user_name} bist du vegetarisch, vegan oder isst du alles?",
+            text=f"{user_name}, bist du vegetarisch, vegan oder isst du alles?",
             buttons=[{"payload": "/choose{\"veg_ent\": \"eat_all\"}", "title": "Allesesser"},
                      {"payload": "/choose{\"veg_ent\": \"vegan\"}", "title": "Vegan"},
                      {"payload": "/choose{\"veg_ent\": \"vegetarian\"}", "title": "Vegetarier"}]
@@ -81,7 +81,7 @@ class ActionReplyToVegetarian(Action):
             reply = "no_valid_veg_slot_recognized_failure"
 
         dispatcher.utter_message(
-            text=f"Gut {user_name} ich merke mir, dass du {reply} bist! In nur 4 Schritten gelangst du nun zu deinem Wunschgericht 😊"
+            text=f"Gut {user_name}, ich merke mir, dass du {reply} bist! In nur 4 Schritten gelangst du nun zu deinem Wunschgericht 😊"
         )
         return []
 
@@ -105,7 +105,7 @@ class ActionAskForCategory(Action):
             "meta_data": {
                 "intent": '/keep_on_category{"cat_ent": ',
                 "Badge": "Schritt 1:",
-                "title": "Wähle deine gewünschten Kategorien",
+                "title": "Bitte wähle deine gewünschten Kategorien",
                 "subtitle": 'Falls du dich noch nicht festlegen willst, klicke auf "Weiter"'
 
             }}
@@ -152,7 +152,7 @@ class ActionAskForProtein(Action):
             "meta_data": {
                 "intent": '/keep_on_protein{"prot_ent": ',
                 "Badge": "Schritt 2:",
-                "title": "Wähle deine Proteine",
+                "title": "Bitte wähle deine Proteine",
                 "subtitle": 'Wenn du fertig bist klicke auf "Weiter"'
 
             }
@@ -199,7 +199,7 @@ class ActionAskForCarbs(Action):
             "meta_data": {
                 "intent": '/keep_on_carbs{"carbs_ent": ',
                 "Badge": "Schritt 3:",
-                "title": "Wähle deine Kohlenhydrate",
+                "title": "Bitte wähle deine Kohlenhydrate",
                 "subtitle": 'Wenn du fertig bist klicke auf "Weiter"'
 
             }
@@ -246,7 +246,7 @@ class ActionAskForGreen(Action):
             "meta_data": {
                 "intent": '/keep_on_green{"green_ent": ',
                 "Badge": "Schritt 4:",
-                "title": "Wähle deine Greens",
+                "title": "Bitte wähle deine Greens",
                 "subtitle": 'Wenn du fertig bist klicke auf "Weiter"'
 
             }
@@ -332,7 +332,7 @@ class ActionReturnSlots(Action):
             if orientation_slot == "vegan":
                 filtered_dish_list = [x for x in dishes_list if 'vegan' in x]
             elif orientation_slot == "vegetarian":
-                filtered_dish_list = [x for x in dishes_list if 'vegetarian' or 'vegan' in x]
+                filtered_dish_list = [x for x in dishes_list if ('vegetarian' or 'vegan') in x]
             elif orientation_slot == "eat_all":
                 filtered_dish_list = [x for x in dishes_list if 'eat_all' or 'vegan' or 'vegetarian' in x]
 
