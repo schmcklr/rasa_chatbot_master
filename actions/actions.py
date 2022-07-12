@@ -295,7 +295,7 @@ class ActionReturnSlots(Action):
             for j in range(len(dishes_list[i])):
                 for elem in range(len(categories_slot)):
                     if categories_slot[elem] == dishes_list[i][j]:
-                        dishes_list[i].insert(len(dishes_list), 2.0)
+                        dishes_list[i].insert(len(dishes_list), 3.0)
 
         # add points for proteins on top of last points
         for i in range(len(dishes_list)):
@@ -332,9 +332,9 @@ class ActionReturnSlots(Action):
             if orientation_slot == "vegan":
                 filtered_dish_list = [x for x in dishes_list if 'vegan' in x]
             elif orientation_slot == "vegetarian":
-                filtered_dish_list = [x for x in dishes_list if ('vegetarian' or 'vegan') in x]
+                filtered_dish_list = ([x for x in dishes_list if 'vegetarian' in x] or [x for x in dishes_list if 'vegan' in x])
             elif orientation_slot == "eat_all":
-                filtered_dish_list = [x for x in dishes_list if 'eat_all' or 'vegan' or 'vegetarian' in x]
+                filtered_dish_list = [x for x in dishes_list]
 
         # if a dish has a score (type=float) append it to a new list and sort it from highest to lowest score
         sorted_dish_list = []
