@@ -18,7 +18,7 @@ rules:
   - action: action_no_advice
   - action: action_restart
 
-- rule: Tell users to keep on with buttons and start from beginning, if they send a message with low NLU confidence
+- rule: tell users to keep on with buttons, if they send a message with low NLU confidence
   steps:
   - intent: nlu_fallback
   - action: utter_please_rephrase

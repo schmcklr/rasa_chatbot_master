@@ -246,7 +246,7 @@ class ActionAskForGreen(Action):
             "meta_data": {
                 "intent": '/keep_on_green{"green_ent": ',
                 "Badge": "Schritt 4:",
-                "title": "Bitte wähle deine Greens",
+                "title": "Bitte wähle deine Extras",
                 "subtitle": 'Wenn du fertig bist klicke auf "Weiter"'
 
             }
@@ -332,7 +332,7 @@ class ActionReturnSlots(Action):
             if orientation_slot == "vegan":
                 filtered_dish_list = [x for x in dishes_list if 'vegan' in x]
             elif orientation_slot == "vegetarian":
-                filtered_dish_list = ([x for x in dishes_list if 'vegetarian' in x] or [x for x in dishes_list if 'vegan' in x])
+                filtered_dish_list = [x for x in dishes_list if 'vegetarian' in x or 'vegan' in x]
             elif orientation_slot == "eat_all":
                 filtered_dish_list = [x for x in dishes_list]
 
