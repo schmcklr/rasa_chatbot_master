@@ -9,7 +9,7 @@ import json
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import EventType, AllSlotsReset, Restarted
+from rasa_sdk.events import EventType
 
 # imports from dataImport (DB-Excel)
 from actions import dataImport
@@ -20,6 +20,7 @@ dt = dataImport.dishes
 rl = dataImport.restaurants
 
 
+# function which gets triggered if user choose no advice
 class ActionNoAdvice(Action):
     def name(self) -> Text:
         return "action_no_advice"
@@ -354,7 +355,8 @@ class ActionReturnSlots(Action):
                 "orientation": json.dumps(sorted_dish_list[i][1], ensure_ascii=False).replace('"', ""),
                 "dish_id": json.dumps(sorted_dish_list[i][0], ensure_ascii=False).replace('"', ""),
                 "price": json.dumps(sorted_dish_list[i][3], ensure_ascii=False).replace('"', ""),
-                "veg_label": json.dumps(sorted_dish_list[i][4], ensure_ascii=False).replace('"', "").replace('eat_all', ""),
+                "veg_label": json.dumps(sorted_dish_list[i][4], ensure_ascii=False).replace('"', "").replace('eat_all',
+                                                                                                             ""),
                 "specials": json.dumps(sorted_dish_list[i][5], ensure_ascii=False).replace('"', ""),
                 "allergen": json.dumps(sorted_dish_list[i][6], ensure_ascii=False).replace('"', ""),
                 "course": json.dumps(sorted_dish_list[i][7], ensure_ascii=False).replace('"', ""),
@@ -375,5 +377,3 @@ class ActionReturnSlots(Action):
             json_message=return_dishes
         )
         return []
-
-
