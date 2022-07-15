@@ -7,10 +7,12 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
+
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
 
 - rule: only trigger action_no_advice if intent no_advice occurs
   steps:
@@ -18,15 +20,20 @@ rules:
   - action: action_no_advice
   - action: action_restart
 
-- rule: tell users to keep on with buttons, if they send a message with low NLU confidence
+
+- rule: tell users to keep on with buttons, if they send a message with low NLU confidence (fallback)
   steps:
   - intent: nlu_fallback
   - action: utter_please_rephrase
-  - action: action_restart
-  - action: utter_support_question
 
-- rule: only ask for name after support_question
+
+- rule: only ask for name after intent advice
   steps:
   - intent: advice
   - action: utter_ask_for_name
 
+
+- rule: only ask support question after intent greet
+  steps:
+  - intent: greet
+  - action: utter_support_question
