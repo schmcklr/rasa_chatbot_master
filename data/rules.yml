@@ -2,6 +2,7 @@ version: "3.1"
 
 rules:
 
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -25,6 +26,8 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: utter_please_rephrase
+  - action: action_restart
+  - intent: greet
 
 
 - rule: only ask for name after intent advice
@@ -32,8 +35,3 @@ rules:
   - intent: advice
   - action: utter_ask_for_name
 
-
-- rule: only ask support question after intent greet
-  steps:
-  - intent: greet
-  - action: utter_support_question
