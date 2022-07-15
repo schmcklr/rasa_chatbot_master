@@ -20,7 +20,7 @@ rules:
   - intent: no_advice
   - action: action_no_advice
   - action: action_restart
-
+  - action: utter_support_question
 
 - rule: tell users to keep on with buttons, if they send a message with low NLU confidence (fallback)
   steps:
