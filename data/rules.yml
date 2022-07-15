@@ -29,7 +29,6 @@ rules:
   - action: action_restart
 
 
-
 - rule: only ask for name after intent advice
   steps:
   - intent: advice
