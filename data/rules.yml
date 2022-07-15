@@ -22,8 +22,6 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: utter_please_rephrase
-  - action: action_restart
-  - action: utter_support_question
 
 - rule: only ask for name after support_question
   steps:
