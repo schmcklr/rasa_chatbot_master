@@ -76,10 +76,10 @@ nlu:
 
 - intent: choose
   examples: |
-    - ich wähle [eat_all](veg_ent)
-    - ich möchte gerne [veg](veg_ent)
-    - ich fühle mich [eat_all](veg_ent) zugehörig
-    - ich bin [vegetarian](veg_ent)
+    - [eat_all](veg_ent)
+    - [veg](veg_ent)
+    - [eat_all](veg_ent)
+    - [vegetarian](veg_ent)
 
 
 - intent: keep_on_category
@@ -119,5 +119,8 @@ nlu:
   examples: | 
     - ich möchte gerne dieses Essen bestellen
     - das will ich!
+    - nehme ich
+    - das möchte ich
+    - ich wähle dieses Gericht
 
 

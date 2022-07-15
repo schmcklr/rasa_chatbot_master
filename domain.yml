@@ -80,8 +80,6 @@ slots:
 
 
 responses:
-  utter_greet:
-  - text: "Hallo, wie geht es dir?"
 
   utter_ask_for_name:
   - text: "Verrätst du mir bitte deinen Namen? 😋"

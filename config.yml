@@ -21,7 +21,6 @@ pipeline:
    - name: FallbackClassifier
      threshold: 0.7
    - name: RegexEntityExtractor
-     use_lookup_tables: True
 
 
 policies:
