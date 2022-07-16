@@ -20,7 +20,7 @@ pipeline:
      entity_recognition: True
    - name: FallbackClassifier
      threshold: 0.7
-   - name: RegexEntityExtractor
+   #- name: RegexEntityExtractor
 
 
 policies:
