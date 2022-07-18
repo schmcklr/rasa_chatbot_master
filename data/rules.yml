@@ -15,7 +15,7 @@ rules:
   - action: utter_iamabot
 
 
-- rule: only trigger action_no_advice if intent no_advice occurs
+- rule: only trigger action_no_advice if intent no_advice occurs (rasa default action "action_restart" for bot reset)
   steps:
   - intent: no_advice
   - action: action_no_advice

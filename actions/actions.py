@@ -3,9 +3,10 @@
 #
 # See code comments or our documentation for more information
 
+# import of json for using json.dumps() to convert obj into json str
 import json
 
-# Rasa SDK Imports
+# Rasa SDK Imports # collectingDispatcher allows sending messages back to the user
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -25,11 +26,10 @@ class ActionNoAdvice(Action):
     def name(self) -> Text:
         return "action_no_advice"
 
-    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
-        user_name = tracker.get_slot('name_slot')
-        dispatcher.utter_message(text=f"Was du brauchst meine Hilfe gar nicht, dann vielleicht beim nächsten Mal!",
-                                 image="https://img.freepik.com/vektoren-kostenlos/netter-box-charakter-laeuft_161751"
-                                       "-1640.jpg")
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
+        dispatcher.utter_message(
+            text=f"Was du brauchst meine Hilfe gar nicht? Dann vielleicht beim nächsten Mal! Au Revoir 🥖",
+            image='https://img.freepik.com/vektoren-kostenlos/nettes-laechelndes-glueckliches-paket-lieferkasten-zeigen-muskel-flache-zeichentrickfigur-abbildung-isolated-auf-weissem-hintergrund-lieferung-box-charakter-konzept_92289-1418.jpg?w=2000')
         return []
 
 
@@ -56,7 +56,7 @@ class ActionAskForVegetarian(Action):
         return []
 
 
-# function which saves decision from above function to a slot and reply to the user
+# function which access above veg_slot and confirms the user selection
 class ActionReplyToVegetarian(Action):
 
     def name(self) -> Text:
@@ -87,13 +87,12 @@ class ActionReplyToVegetarian(Action):
         return []
 
 
-#
+# this function sends categories from our database to the FE
 class ActionAskForCategory(Action):
     # return the name of the action - pay attention to the spelling
     def name(self) -> Text:
         return "ask_for_category"
 
-    # collectingDispatcher allows to send back messages to the user
     def run(
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
@@ -130,7 +129,7 @@ class ActionAskForProtein(Action):
     ) -> List[EventType]:
 
         orientation_slot = tracker.get_slot('veg_slot')
-
+        # this function checks if the user is vegan or vegetarian and sends only buttons suitable for him to the frontend
         if orientation_slot == 'vegan':
             protein_array = sc[(sc['Kategorie_ID'] == 2) & (sc['Bezeichnung']) &
                                (sc['Essverhalten'] == 'vegan')]
@@ -273,9 +272,8 @@ class ActionReturnSlots(Action):
             domain: Dict
     ) -> List[EventType]:
 
-        user_name = tracker.get_slot('name_slot')
-
         # getting slots back
+        user_name = tracker.get_slot('name_slot')
         orientation_slot = tracker.get_slot('veg_slot')
         categories_slot = tracker.get_slot('cat_slot')
         protein_slot = tracker.get_slot('prot_slot')
@@ -318,7 +316,7 @@ class ActionReturnSlots(Action):
                     else:
                         dishes_list[i].insert(len(dishes_list), 1.2)
 
-        # add points for carbs on top of last points (in case of no ranking, append a float on the end of the list)
+        # add points for extras on top of last points (in case of no ranking, append a float on the end of the list)
         for i in range(len(dishes_list)):
             for green in range(len(green_slot)):
                 if green_slot[green] in (dishes_list[i][11]):

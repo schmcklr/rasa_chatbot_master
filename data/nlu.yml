@@ -20,6 +20,7 @@ nlu:
     - guten tag
     - moin moin
 
+
 - intent: goodbye
   examples: |
     - tschüss
@@ -36,7 +37,6 @@ nlu:
     - bis dann
     - auf wiedersehen
     - bis dahin
-    
     
 
 - intent: tell_name
@@ -64,6 +64,10 @@ nlu:
     - bitte berate mich
     - ich möchte eine beratung
     - beratung
+    - ich möchte Beratung
+    - Hilf mir
+    - Hilf mir weiter
+    - ich weiß nicht, was ich essen soll
 
 
 - intent: no_advice
